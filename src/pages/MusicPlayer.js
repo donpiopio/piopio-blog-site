@@ -4,6 +4,7 @@ import '../css/main.css';
 import tracks from '../data/tracks.json';
 
 const MusicPlayer = () => {
+  const [showPlayPrompt, setShowPlayPrompt] = useState(true);
   const playerRef = useRef(null);
   const [currentTrack, setCurrentTrack] = useState(Math.floor(Math.random() * tracks.length));
   const [playerReady, setPlayerReady] = useState(false);
@@ -11,7 +12,6 @@ const MusicPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.7);
-  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
 
   // Load YouTube IFrame API
   useEffect(() => {
@@ -51,7 +51,7 @@ const MusicPlayer = () => {
       setCurrentTime(0);
       setTimeout(() => {
         setDuration(playerRef.current.getDuration());
-        if (isPlaying || !autoplayBlocked) {
+        if (isPlaying && !showPlayPrompt) {
           playerRef.current.playVideo();
         }
       }, 500);
@@ -64,15 +64,7 @@ const MusicPlayer = () => {
     setPlayerReady(true);
     playerRef.current.setVolume(volume * 100);
     setDuration(playerRef.current.getDuration());
-    // Try autoplay on load
-    const playPromise = playerRef.current.playVideo();
-    // Detect autoplay block
-    setTimeout(() => {
-      const state = playerRef.current.getPlayerState();
-      if (state !== window.YT.PlayerState.PLAYING) {
-        setAutoplayBlocked(true);
-      }
-    }, 500);
+    // Don't autoplay on load - let user choose via the popup
   }
 
   function onPlayerStateChange(event) {
@@ -82,7 +74,6 @@ const MusicPlayer = () => {
     if (event.data === window.YT.PlayerState.PLAYING) {
       setIsPlaying(true);
       setDuration(playerRef.current.getDuration());
-      setAutoplayBlocked(false); // Autoplay is working
     } else if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.CUED) {
       setIsPlaying(false);
     }
@@ -102,6 +93,21 @@ const MusicPlayer = () => {
   }, [isPlaying]);
 
   // Handlers
+  // Play prompt handler
+  function handlePlayPrompt(choice) {
+    setShowPlayPrompt(false);
+    if (choice === 'play') {
+      setIsPlaying(true);
+      if (playerRef.current) {
+        playerRef.current.playVideo();
+      }
+    } else {
+      setIsPlaying(false);
+      if (playerRef.current) {
+        playerRef.current.pauseVideo();
+      }
+    }
+  }
   const handlePlayPause = () => {
     if (!playerReady) return;
     const state = playerRef.current.getPlayerState();
@@ -109,7 +115,6 @@ const MusicPlayer = () => {
       playerRef.current.pauseVideo();
     } else {
       playerRef.current.playVideo();
-      setAutoplayBlocked(false); // User initiated play
     }
   };
 
@@ -152,80 +157,89 @@ const MusicPlayer = () => {
   }
 
   return (
-    <footer className="fixed bottom-0 left-0 w-full z-50 p-4 border-t-2 border-rose-900 shadow-2xl bg-pink-300 music-player">
-      <div id="youtube-player-container" style={{ display: 'none' }}></div>
-      {autoplayBlocked && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-          <button
-            className="px-8 py-4 rounded-lg bg-pink-400 text-rose-900 text-2xl font-bold shadow-lg border-2 border-rose-900 hover:bg-pink-300 transition"
-            onClick={handlePlayPause}
-          >
-            Click to Play Music
-          </button>
+    <>
+      {showPlayPrompt && (
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(200,0,64,0.85)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ background: '#f7b6c2', border: '2px solid #c80040', borderRadius: '10px', padding: '32px 24px', boxShadow: '2px 2px 0 #c80040', textAlign: 'center', fontFamily: 'Montserrat, Arial, sans-serif', color: '#c80040', minWidth: '320px' }}>
+            <h2 style={{ fontWeight: 'bold', fontSize: '1.5rem', marginBottom: '16px' }}>Play Music?</h2>
+            <p style={{ marginBottom: '24px', fontSize: '1rem' }}>Would you like to play music while browsing? You can always start playback later.</p>
+            <button onClick={() => handlePlayPrompt('play')} style={{ background: '#c80040', color: '#fff', padding: '10px 24px', borderRadius: '6px', fontWeight: 'bold', fontSize: '1rem', marginRight: '16px', border: 'none', boxShadow: '1px 1px 0 #a80030', cursor: 'pointer' }}>Play Music</button>
+            <button onClick={() => handlePlayPrompt('no')} style={{ background: '#fff', color: '#c80040', padding: '10px 24px', borderRadius: '6px', fontWeight: 'bold', fontSize: '1rem', border: '2px solid #c80040', boxShadow: '1px 1px 0 #a80030', cursor: 'pointer' }}>Don't Play</button>
+          </div>
         </div>
       )}
-      <div className="boxy-window flex flex-col p-3 w-full max-w-6xl mx-auto">
-        <div className="w-full flex items-center space-x-2 text-rose-900 mb-3">
-          <span className="text-sm w-8 text-left">{formatTime(currentTime)}</span>
-          <div className="w-full relative flex items-center h-4 music-progress-container">
-            <div className="music-progress-track">
-              <div 
-                className="music-progress-fill" 
-                style={{width: `${duration ? (currentTime / duration) * 100 : 0}%`}}
-              ></div>
+      <footer className="fixed bottom-0 left-0 w-full z-50 p-4 border-t-2 border-rose-900 shadow-2xl bg-pink-300 music-player">
+        <div id="youtube-player-container" style={{ display: 'none' }}></div>
+
+        <div className="boxy-window flex flex-col p-3 w-full max-w-6xl mx-auto">
+          <div className="w-full flex items-center space-x-2 text-rose-900 mb-3">
+            <span className="text-sm w-8 text-left">{formatTime(currentTime)}</span>
+            <div className="w-full relative flex items-center h-4 music-progress-container">
+              <div className="music-progress-track">
+                <div 
+                  className="music-progress-fill" 
+                  style={{width: `${duration ? (currentTime / duration) * 100 : 0}%`}}
+                ></div>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={duration ? (currentTime / duration) * 100 : 0}
+                step="0.1"
+                className="w-full absolute top-0 left-0 music-progress-bar"
+                onChange={handleProgress}
+              />
             </div>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={duration ? (currentTime / duration) * 100 : 0}
-              step="0.1"
-              className="w-full absolute top-0 left-0 music-progress-bar"
-              onChange={handleProgress}
-            />
+            <span className="text-sm w-8 text-right">{formatTime(duration)}</span>
           </div>
-          <span className="text-sm w-8 text-right">{formatTime(duration)}</span>
-        </div>
-        <div className="flex items-center justify-between w-full relative">
-          <div className="flex items-center space-x-3 flex-shrink min-w-0 max-w-[40%]">
-            <img src={require(`../${tracks[currentTrack].imageSrc}`)} alt="Track Art" className="w-10 h-10 object-cover border-2 border-rose-900 shadow-md" />
-            <div className="text-rose-900 overflow-hidden">
-              <div className="text-lg font-bold truncate">{tracks[currentTrack].title}</div>
-              <div className="text-sm truncate">{tracks[currentTrack].artist}</div>
+          <div className="flex items-center justify-between w-full relative">
+            <div className="flex items-center space-x-3 flex-shrink min-w-0 max-w-[40%]">
+              <img src={require(`../${tracks[currentTrack].imageSrc}`)} alt="Track Art" className="w-10 h-10 object-cover border-2 border-rose-900 shadow-md" />
+              <div className="text-rose-900 overflow-hidden">
+                <div className="text-lg font-bold truncate">{tracks[currentTrack].title}</div>
+                <div className="text-sm truncate">{tracks[currentTrack].artist}</div>
+              </div>
+            </div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-4">
+              <button
+                className="text-rose-900 hover:text-rose-700 transition-colors duration-150 text-3xl"
+                aria-label="Previous Track"
+                onClick={handlePrev}
+              >&lt;&lt;</button>
+              <button
+                className="text-rose-900 hover:text-rose-700 transition-colors duration-150 text-3xl"
+                aria-label="Play/Pause"
+                onClick={handlePlayPause}
+              >{isPlaying ? '⏸' : '▶'}</button>
+              <button
+                className="text-rose-900 hover:text-rose-700 transition-colors duration-150 text-3xl"
+                aria-label="Next Track"
+                onClick={handleNext}
+              >&gt;&gt;</button>
+            </div>
+            {/* Retro/cute themed volume slider on the right */}
+            <div className="flex items-center space-x-2 text-rose-900" style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', background: '#f7b6c2', border: '2px solid #c80040', borderRadius: '8px', padding: '8px 16px', boxShadow: '2px 2px 0 #c80040' }}>
+              <span style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#c80040', marginRight: '8px', fontFamily: 'Montserrat, Arial, sans-serif' }}>VOL</span>
+              <div className="volume-slider-container">
+                <div className="volume-slider-track">
+                  <div className="volume-slider-fill" style={{ width: `${volume * 100}%` }}></div>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value={volume}
+                  className="music-volume-slider"
+                  onChange={handleVolume}
+                />
+              </div>
             </div>
           </div>
-          <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-4">
-            <button
-              className="text-rose-900 hover:text-rose-700 transition-colors duration-150 text-3xl"
-              aria-label="Previous Track"
-              onClick={handlePrev}
-            >&lt;&lt;</button>
-            <button
-              className="text-rose-900 hover:text-rose-700 transition-colors duration-150 text-3xl"
-              aria-label="Play/Pause"
-              onClick={handlePlayPause}
-            >{isPlaying ? '⏸' : '▶'}</button>
-            <button
-              className="text-rose-900 hover:text-rose-700 transition-colors duration-150 text-3xl"
-              aria-label="Next Track"
-              onClick={handleNext}
-            >&gt;&gt;</button>
-          </div>
-          <div className="flex items-center space-x-2 text-rose-900 hidden sm:flex">
-            <span className="text-xl">VOL</span>
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value={volume}
-              className="w-20 cursor-pointer accent-rose-700"
-              onChange={handleVolume}
-            />
-          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 

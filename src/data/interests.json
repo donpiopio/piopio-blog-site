@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "src": "images/hachi/moving_hachi.jpg",
+    "alt": "Moving Hachi",
+    "title": "Moving Hachi",
+    "notes": "An animated sprite of my original character, Hachi."
+  },
+  {
+    "id": 2,
+    "src": "images/hachi/nerd_hachi.png",
+    "alt": "Nerd Hachi",
+    "title": "Nerd Hachi",
+    "notes": "Hachi looking rather studious."
+  },
+  {
+    "id": 3,
+    "src": "images/songs/desktopbuddy.jpeg",
+    "alt": "Desktop Buddy",
+    "title": "Desktop Buddy - NANORAY",
+    "notes": "Album art for the track 'Desktop Buddy' by NANORAY."
+  },
+  {
+    "id": 4,
+    "src": "images/songs/gigasoft.jpg",
+    "alt": "Gigasoft",
+    "title": "GIGASOFT INDUSTRIES - HOTEL PARALLAX",
+    "notes": "Album art for the track 'GIGASOFT INDUSTRIES' by HOTEL PARALLAX."
+  },
+  {
+    "id": 5,
+    "src": "images/songs/machine_love.jpg",
+    "alt": "Machine Love",
+    "title": "Machine Love - JamieP",
+    "notes": "Album art for the track 'Machine Love (Instrumental)' by JamieP."
+  },
+  {
+    "id": 6,
+    "src": "images/songs/sans.jpeg",
+    "alt": "Sans",
+    "title": "Sanasational - T\"zalt",
+    "notes": "Album art for the track 'Sanasational (Instrumental)' by T\"zalt."
+  },
+  {
+    "id": 7,
+    "src": "images/songs/upsidedown.jpg",
+    "alt": "Upside Down",
+    "title": "my room is upside down - Deathbrain",
+    "notes": "Album art for the track 'my room is upside down' by Deathbrain."
+  },
+  {
+    "id": 8,
+    "src": "images/songs/yokai_disco.jpg",
+    "alt": "Yokai Disco",
+    "title": "Yokai Disco - Telan Devik",
+    "notes": "Album art for the track 'Yokai Disco' by Telan Devik."
+  },
+  {
+    "id": 9,
+    "src": "images/frens/most_beautiful_girl_in_da_world.png",
+    "alt": "A beautiful girl",
+    "title": "Pixel Portrait",
+    "notes": "A pixel art portrait of a friend."
+  }
+]

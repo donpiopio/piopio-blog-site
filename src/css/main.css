@@ -1,0 +1,234 @@
+.home-friends-box {
+    flex: 0 0 320px; /* Slightly wider for more content */
+    min-width: 270px;
+    display: flex;
+    flex-direction: column;
+    max-height: 600px; /* Increased max height for more friends */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+.friends-grid {
+    overflow-y: auto; /* Enable vertical scrolling */
+    flex-grow: 1;
+}
+
+.home-friends-box img {
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+.friend-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.friend-text {
+    word-wrap: break-word;
+    white-space: normal;
+    display: inline-block;
+    width: 100%;
+}
+/* Navigation Pane Styling */
+.navigation-pane {
+    flex: 0 0 250px; /* Do not grow, do not shrink, base width of 250px */
+    min-width: 220px;
+}
+
+.home-middle-box {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.home-middle-box .hover-image-container {
+    width: 120px;
+    height: 120px;
+}
+.home-flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+@media (min-width: 900px) {
+    .home-flex-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+.aboutme-flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+@media (min-width: 900px) {
+    .aboutme-flex-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+.aboutme-nav-box, .aboutme-content-box {
+    box-sizing: border-box;
+}
+@media (max-width: 900px) {
+    .aboutme-nav-box, .aboutme-content-box {
+        width: 100% !important;
+        max-width: none;
+        min-width: 0;
+        margin-bottom: 1.5rem;
+    }
+}
+@media (min-width: 901px) {
+    .aboutme-nav-box {
+        width: 33%;
+        min-width: 220px;
+        max-width: 350px;
+    }
+    .aboutme-content-box {
+        width: 67%;
+        min-width: 300px;
+    }
+}
+/* About Me page custom box widths for horizontal layout */
+.aboutme-nav-box {
+    width: 33%;
+    min-width: 220px;
+    max-width: 350px;
+}
+.aboutme-content-box {
+    width: 67%;
+    min-width: 300px;
+}
+/* Custom font and background */
+body {
+    font-family: 'VT323', monospace;
+    background-color: #FEE7F2;
+    background-image: url('../images/backgrounds/site_background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Main window/box style */
+.boxy-window {
+    border: 2px solid #D62828;
+    box-shadow: 4px 4px 0px #A01B1B;
+    background-color: #FFC0CB;
+}
+
+.boxy-window-title {
+    background-color: #FF8BA0;
+    border-bottom: 2px solid #D62828;
+}
+
+
+/* Cute digital progress slider styling */
+.music-progress-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 12px;
+}
+
+.music-progress-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFC0CB; /* Unplayed part */
+  border: 2px solid #A01B1B;
+  box-sizing: border-box;
+}
+
+.music-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #D62828; /* Darker red for played part */
+}
+
+.music-progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  background: transparent; /* Make the default track invisible */
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+}
+
+/* Thumb (the rectangle) */
+.music-progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 24px;
+  background: #A01B1B;
+  border: 2px solid #FEE7F2;
+  border-radius: 0;
+  cursor: pointer;
+  margin-top: 0; /* Adjust if needed */
+}
+
+.music-progress-bar::-moz-range-thumb {
+  width: 12px;
+  height: 24px;
+  background: #A01B1B;
+  border: 2px solid #FEE7F2;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.music-progress-bar:hover::-webkit-slider-thumb {
+  background: #FF8BA0;
+}
+
+.music-progress-bar:hover::-moz-range-thumb {
+  background: #FF8BA0;
+}
+
+
+
+
+/* NEW CUSTOM STYLES for the large hover image and swap effect */
+.hover-image-container {
+    width: 200px; /* Increased size to 120px */
+    height: 200px;
+    transition: transform 0.3s ease-out;
+    cursor: pointer;
+    /* Removed border and box-shadow for a cleaner look */
+    position: relative; /* Essential for containing absolute child images */
+    overflow: hidden; /* Ensures images stay inside the boundary */
+}
+.hover-image-container:hover {
+    transform: translateY(-8px) rotate(3deg); /* Lift and slight tilt on hover */
+}
+
+/* Styling for the two images inside the container */
+.hover-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
+    object-fit: cover;
+}
+
+/* Hide the hover image by default */
+.hover-img-hidden {
+    opacity: 0;
+}
+
+/* On container hover, hide default image and show hover image */
+.hover-image-container:hover .default-img-visible {
+    opacity: 0;
+}
+.hover-image-container:hover .hover-img-hidden {
+    opacity: 1;
+}

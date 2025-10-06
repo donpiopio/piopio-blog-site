@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Yokai Disco",
+    "artist": "Telan Devik",
+    "videoId": "xgOeKgGKuP0",
+    "imageSrc": "images/songs/yokai_disco.jpg"
+  },
+  {
+    "title": "Machine Love (Instrumental)",
+    "artist": "JamieP",
+    "videoId": "eXtOI1tMnnE",
+    "imageSrc": "images/songs/machine_love.jpg"
+  },
+  {
+    "title": "Sanasational (Instrumental)",
+    "artist": "T\"zalt",
+    "videoId": "GpIWpV09O40",
+    "imageSrc": "images/songs/sans.jpeg"
+  },
+  {
+    "title": "DesktopBuddy",
+    "artist": "NANORAY",
+    "videoId": "6b_c_99GGcw",
+    "imageSrc": "images/songs/desktopbuddy.jpeg"
+  },
+  {
+    "title": "GIGASOFT INDUSTRIES",
+    "artist": "HOTEL PARALLAX",
+    "videoId": "o4jkYTJAUS8",
+    "imageSrc": "images/songs/gigasoft.jpg"
+  },
+  {
+    "title": "my room is upside down",
+    "artist": "Deathbrain",
+    "videoId": "Oq1UZDDnhrY",
+    "imageSrc": "images/songs/upsidedown.jpg"
+  }
+]

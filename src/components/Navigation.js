@@ -14,7 +14,7 @@ const Navigation = () => (
       <Link to="/interests" className="text-rose-900 block text-center px-3 py-1 hover:bg-rose-500 hover:text-white transition-colors duration-200 border-b-2 border-rose-900">Interest Board</Link>
       <a href="#contact" className="text-rose-900 block text-center px-3 py-1 hover:bg-rose-500 hover:text-white transition-colors duration-200">Contact Me!</a>
       <div className="px-3 py-1 bg-rose-200 border-2 border-rose-900 rounded-t font-extrabold text-base text-rose-900 tracking-wide mt-2 mb-0.5">Resume/Creations</div>
-      <a href="#resume" className="text-rose-900 block text-center px-3 py-1 hover:bg-rose-500 hover:text-white transition-colors duration-200 border-b-2 border-rose-900">Resume</a>
+      <Link to="/resume" className="text-rose-900 block text-center px-3 py-1 hover:bg-rose-500 hover:text-white transition-colors duration-200 border-b-2 border-rose-900">Resume</Link>
       <a href="#projects" className="text-rose-900 block text-center px-3 py-1 hover:bg-rose-500 hover:text-white transition-colors duration-200">Projects</a>
     </nav>
   </div>

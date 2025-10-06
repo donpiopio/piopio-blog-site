@@ -1,0 +1,1 @@
+Add your resume PDF to the public folder as resume.pdf. This placeholder ensures the download and preview links work.

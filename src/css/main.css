@@ -1,3 +1,48 @@
+/* Pixel Operator font for navigation pane - maximum specificity across all pages */
+.home-flex-container #navigation.boxy-window.navigation-pane,
+.aboutme-flex-container #navigation.boxy-window.navigation-pane,
+#navigation.boxy-window.navigation-pane, 
+.home-flex-container #navigation.boxy-window.navigation-pane *, 
+.aboutme-flex-container #navigation.boxy-window.navigation-pane *,
+#navigation.boxy-window.navigation-pane *, 
+#navigation.boxy-window.navigation-pane h2,
+#navigation.boxy-window.navigation-pane .boxy-window-title,
+#navigation.boxy-window.navigation-pane nav,
+#navigation.boxy-window.navigation-pane nav *,
+#navigation.boxy-window.navigation-pane div,
+#navigation.boxy-window.navigation-pane a,
+#navigation.boxy-window.navigation-pane span {
+    font-family: 'Press Start 2P', 'IBM Plex Mono', 'Fira Mono', 'Consolas', 'monospace', Arial, sans-serif !important;
+    font-size: 0.85em !important;
+    letter-spacing: 0.5px !important;
+    line-height: 1.4 !important;
+}
+
+/* Game menu effect: only move text right on hover */
+.navigation-pane nav a .nav-link-text,
+.navigation-pane nav .router-link .nav-link-text,
+.navigation-pane nav .nav-link .nav-link-text {
+    display: inline-block;
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.navigation-pane nav a:hover .nav-link-text,
+.navigation-pane nav .router-link:hover .nav-link-text,
+.navigation-pane nav .nav-link:hover .nav-link-text {
+    transform: translateX(10px);
+}
+/* Readable retro pixel/mono font for Y2K vibe */
+body, .boxy-window, .boxy-window-title, .collage-item, .music-player, .navigation-pane, .home-flex-container, .home-middle-box, .aboutme-nav-box, .aboutme-content-box, .music-progress-bar, .music-volume-slider, .prose, h1, h2, h3, h4, h5, h6, button, input, select, textarea {
+    font-family: 'IBM Plex Mono', 'Fira Mono', 'Consolas', 'monospace', Arial, sans-serif !important;
+    letter-spacing: 0.2px;
+    font-size: 1.08em;
+}
+
+/* Make headings a bit bolder and larger for pixel/mono font */
+h1, h2, h3, .boxy-window-title {
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    font-size: 1.18em;
+}
 /* Volume slider container for custom styling */
 .volume-slider-container {
     position: relative;
@@ -98,10 +143,46 @@
     display: inline-block;
     width: 100%;
 }
-/* Navigation Pane Styling */
+/* Navigation Pane Styling - absolutely fixed size across all pages */
 .navigation-pane {
-    flex: 0 0 250px; /* Do not grow, do not shrink, base width of 250px */
-    min-width: 220px;
+    flex: 0 0 250px !important; /* Do not grow, do not shrink, base width of 250px */
+    min-width: 250px !important;
+    max-width: 250px !important;
+    width: 250px !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    align-self: flex-start !important; /* Prevent vertical stretching */
+    height: auto !important; /* Let content determine height */
+    max-height: none !important;
+}
+
+/* Force navigation pane sizing in all flex containers with maximum specificity */
+.home-flex-container .navigation-pane,
+.aboutme-flex-container .navigation-pane,
+main .navigation-pane,
+div .navigation-pane {
+    flex: 0 0 250px !important;
+    min-width: 250px !important;
+    max-width: 250px !important;
+    width: 250px !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    align-self: flex-start !important; /* Prevent vertical stretching */
+    height: auto !important; /* Let content determine height */
+    max-height: none !important;
+}
+
+/* Ensure flex containers use flex-start alignment to prevent stretching */
+.home-flex-container,
+.aboutme-flex-container {
+    align-items: flex-start !important; /* Changed from stretch to flex-start */
+}
+
+/* Make sure content areas take up remaining space without affecting navigation */
+.home-flex-container > *:not(.navigation-pane),
+.aboutme-flex-container > *:not(.navigation-pane) {
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .home-middle-box {

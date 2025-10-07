@@ -22,7 +22,10 @@ const Home = () => (
         </div>
         <div className="p-4 text-rose-800 flex items-center">
           <div className="flex-1">
-            <p className="mb-4">Welcome to PioPio's website! This site is my personal little corner, where I'll be sharing things I'm interested in, updates for myself, and anything from my OC art to my latest projects. Please look around!</p>
+            <p className="mb-4">Welcome to PioPio's website! This is where I'll be sharing things I'm interested in, updates from myself, and anything from my OC's to my latest projects. 
+              <br />This is also where I will post some of my professional work, projects, and resume for anyone interested in reaching out for collaboration or job opportunities. 
+              <br />So whoever you are, please look around and feel free to contact me if you have any questions or just want to say hi!
+            </p>
           </div>
           <div className="hover-image-container ml-6" style={{ width: '120px', height: '120px' }}>
             <img src={require('../images/hachi/standing_hachi.jpg')} alt="Default Icon" className="default-img-visible" />

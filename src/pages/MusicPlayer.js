@@ -1,10 +1,9 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import '../css/main.css';
 import tracks from '../data/tracks.json';
 
 const MusicPlayer = () => {
-  const [showPlayPrompt, setShowPlayPrompt] = useState(true);
+  // Removed autoplay popup logic
   const playerRef = useRef(null);
   const [currentTrack, setCurrentTrack] = useState(Math.floor(Math.random() * tracks.length));
   const [playerReady, setPlayerReady] = useState(false);
@@ -46,14 +45,12 @@ const MusicPlayer = () => {
   useEffect(() => {
     if (playerReady && playerRef.current) {
       playerRef.current.cueVideoById(tracks[currentTrack].videoId);
-      // Don't reset isPlaying here to allow for continuous play
-      // setIsPlaying(false); 
       setCurrentTime(0);
       setTimeout(() => {
         setDuration(playerRef.current.getDuration());
-        if (isPlaying && !showPlayPrompt) {
-          playerRef.current.playVideo();
-        }
+        // Try to autoplay on track change
+        setIsPlaying(true);
+        playerRef.current.playVideo();
       }, 500);
     }
     // eslint-disable-next-line
@@ -64,7 +61,11 @@ const MusicPlayer = () => {
     setPlayerReady(true);
     playerRef.current.setVolume(volume * 100);
     setDuration(playerRef.current.getDuration());
-    // Don't autoplay on load - let user choose via the popup
+    // Try to autoplay on load
+    setIsPlaying(true);
+    if (playerRef.current) {
+      playerRef.current.playVideo();
+    }
   }
 
   function onPlayerStateChange(event) {
@@ -93,21 +94,7 @@ const MusicPlayer = () => {
   }, [isPlaying]);
 
   // Handlers
-  // Play prompt handler
-  function handlePlayPrompt(choice) {
-    setShowPlayPrompt(false);
-    if (choice === 'play') {
-      setIsPlaying(true);
-      if (playerRef.current) {
-        playerRef.current.playVideo();
-      }
-    } else {
-      setIsPlaying(false);
-      if (playerRef.current) {
-        playerRef.current.pauseVideo();
-      }
-    }
-  }
+  // Removed play prompt handler
   const handlePlayPause = () => {
     if (!playerReady) return;
     const state = playerRef.current.getPlayerState();
@@ -158,22 +145,12 @@ const MusicPlayer = () => {
 
   return (
     <>
-      {showPlayPrompt && (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(200,0,64,0.85)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ background: '#f7b6c2', border: '2px solid #c80040', borderRadius: '10px', padding: '32px 24px', boxShadow: '2px 2px 0 #c80040', textAlign: 'center', fontFamily: 'Montserrat, Arial, sans-serif', color: '#c80040', minWidth: '320px' }}>
-            <h2 style={{ fontWeight: 'bold', fontSize: '1.5rem', marginBottom: '16px' }}>Play Music?</h2>
-            <p style={{ marginBottom: '24px', fontSize: '1rem' }}>Would you like to play music while browsing? You can always start playback later.</p>
-            <button onClick={() => handlePlayPrompt('play')} style={{ background: '#c80040', color: '#fff', padding: '10px 24px', borderRadius: '6px', fontWeight: 'bold', fontSize: '1rem', marginRight: '16px', border: 'none', boxShadow: '1px 1px 0 #a80030', cursor: 'pointer' }}>Play Music</button>
-            <button onClick={() => handlePlayPrompt('no')} style={{ background: '#fff', color: '#c80040', padding: '10px 24px', borderRadius: '6px', fontWeight: 'bold', fontSize: '1rem', border: '2px solid #c80040', boxShadow: '1px 1px 0 #a80030', cursor: 'pointer' }}>Don't Play</button>
-          </div>
-        </div>
-      )}
-      <footer className="fixed bottom-0 left-0 w-full z-50 p-4 border-t-2 border-rose-900 shadow-2xl bg-pink-300 music-player">
+      <footer className="fixed bottom-0 left-0 w-full z-50 py-5 px-4 border-t-2 border-rose-900 shadow-2xl bg-pink-300 music-player" style={{ minHeight: '82px' }}>
         <div id="youtube-player-container" style={{ display: 'none' }}></div>
 
-        <div className="boxy-window flex flex-col p-3 w-full max-w-6xl mx-auto">
+        <div className="boxy-window flex flex-col w-full max-w-6xl mx-auto" style={{ padding: '20px 16px 12px 16px' }}>
           <div className="w-full flex items-center space-x-2 text-rose-900 mb-3">
-            <span className="text-sm w-8 text-left">{formatTime(currentTime)}</span>
+            <span className="text-sm w-8 text-left music-player-time">{formatTime(currentTime)}</span>
             <div className="w-full relative flex items-center h-4 music-progress-container">
               <div className="music-progress-track">
                 <div 
@@ -191,7 +168,7 @@ const MusicPlayer = () => {
                 onChange={handleProgress}
               />
             </div>
-            <span className="text-sm w-8 text-right">{formatTime(duration)}</span>
+            <span className="text-sm w-8 text-right music-player-time">{formatTime(duration)}</span>
           </div>
           <div className="flex items-center justify-between w-full relative">
             <div className="flex items-center space-x-3 flex-shrink min-w-0 max-w-[40%]">

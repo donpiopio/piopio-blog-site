@@ -1,3 +1,16 @@
+/* Pixel font for music player time numbers */
+.music-player-time {
+    font-family: 'Press Start 2P', Pixel, monospace !important;
+    font-size: 0.7rem;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    width: 3.7em;
+    min-width: 3.7em;
+    display: inline-block;
+    text-align: center;
+    padding: 0 0px;
+    box-sizing: border-box;
+}
 /* Pixel Operator font for navigation pane - maximum specificity across all pages */
 .home-flex-container #navigation.boxy-window.navigation-pane,
 .aboutme-flex-container #navigation.boxy-window.navigation-pane,
@@ -145,10 +158,10 @@ h1, h2, h3, .boxy-window-title {
 }
 /* Navigation Pane Styling - absolutely fixed size across all pages */
 .navigation-pane {
-    flex: 0 0 250px !important; /* Do not grow, do not shrink, base width of 250px */
-    min-width: 250px !important;
-    max-width: 250px !important;
-    width: 250px !important;
+    flex: 0 0 280px !important; /* Do not grow, do not shrink, base width */
+    min-width: 280px !important;
+    max-width: 280px !important;
+    width: 280px !important;
     flex-shrink: 0 !important;
     flex-grow: 0 !important;
     align-self: flex-start !important; /* Prevent vertical stretching */
@@ -161,10 +174,10 @@ h1, h2, h3, .boxy-window-title {
 .aboutme-flex-container .navigation-pane,
 main .navigation-pane,
 div .navigation-pane {
-    flex: 0 0 250px !important;
-    min-width: 250px !important;
-    max-width: 250px !important;
-    width: 250px !important;
+    flex: 0 0 280px !important;
+    min-width: 280px !important;
+    max-width: 280px !important;
+    width: 280px !important;
     flex-shrink: 0 !important;
     flex-grow: 0 !important;
     align-self: flex-start !important; /* Prevent vertical stretching */
@@ -228,25 +241,31 @@ div .navigation-pane {
     }
 }
 @media (min-width: 901px) {
-    .aboutme-nav-box {
+    .aboutme-flex-container .aboutme-nav-box {
         width: 33%;
         min-width: 220px;
         max-width: 350px;
     }
-    .aboutme-content-box {
+    .aboutme-flex-container .aboutme-content-box {
         width: 67%;
         min-width: 300px;
     }
 }
-/* About Me page custom box widths for horizontal layout */
-.aboutme-nav-box {
+/* About Me page custom box widths for horizontal layout (scoped to legacy flex layout only) */
+.aboutme-flex-container .aboutme-nav-box {
     width: 33%;
     min-width: 220px;
     max-width: 350px;
 }
-.aboutme-content-box {
+.aboutme-flex-container .aboutme-content-box {
     width: 67%;
     min-width: 300px;
+}
+/* New grid layout override: let content take full width when used inside site-content-grid */
+.site-content-grid .aboutme-content-box {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
 }
 /* Custom font and background */
 body {
@@ -260,15 +279,97 @@ body {
 
 /* Main window/box style */
 .boxy-window {
-    border: 2px solid #D62828;
-    box-shadow: 4px 4px 0px #A01B1B;
-    background-color: #FFC0CB;
+    --y2k-border: #D62828;
+    --y2k-shadow: #A01B1B;
+    --y2k-bg: #FFC0CB;
+    border: 3px solid var(--y2k-border);
+    box-shadow: 4px 4px 0px var(--y2k-shadow);
+    background-color: var(--y2k-bg);
+    border-radius: 18px;
 }
 
 .boxy-window-title {
     background-color: #FF8BA0;
-    border-bottom: 2px solid #D62828;
+    border-bottom: 3px solid #D62828;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
 }
+
+/* =========================
+     Y2K Block Layout (Header + Nav + Content with connectors)
+     ========================= */
+.site-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* left column (nav) + right column (content) */
+    grid-template-rows: auto auto 1fr; /* header, connectors, content */
+    grid-template-areas:
+        "header header"
+        "connect connect"
+        "nav content";
+    gap: 1.25rem;
+    width: min(1200px, 92vw);
+    margin: 1.25rem auto 9rem; /* leave room for footer music player */
+}
+
+    /* Rounded outer site frame */
+    .site-frame {
+        width: min(1280px, 96vw);
+        margin: 1.5rem auto 9rem;
+        border: 4px solid var(--y2k-rose-600);
+        border-radius: 28px;
+        background: var(--y2k-pink-200);
+        box-shadow: 6px 6px 0 var(--y2k-rose-700);
+        padding: 1.25rem;
+    }
+
+.site-header { grid-area: header; padding: 1rem; }
+.connector-bar { grid-area: connect; position: relative; height: 18px; }
+.site-nav { grid-area: nav; }
+.site-content { grid-area: content; }
+
+/* Connector visuals: lines + pixel dots */
+.connector-line {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    background: #A01B1B;
+    box-shadow: 0 0 0 2px #FF8BA0 inset;
+}
+.connector-dot {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: #A01B1B;
+    border: 2px solid #FF8BA0;
+    box-shadow: 2px 2px 0 #A01B1B;
+}
+/* left line from below header to nav */
+.connector-nav { left: 8px; width: 240px; }
+.connector-nav-dot { left: 250px; }
+/* right line from below header to main */
+.connector-main { left: 280px; right: 8px; }
+.connector-main-dot { right: 8px; }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .site-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "header"
+            "connect"
+            "nav"
+            "content";
+        gap: 1rem;
+    }
+    .connector-nav { left: 8px; width: calc(40% - 24px); }
+    .connector-nav-dot { left: calc(40% - 8px); }
+    .connector-main { left: calc(40% + 8px); right: 8px; }
+}
+
 
 
 /* Cute digital progress slider styling */
@@ -381,4 +482,68 @@ body {
 }
 .hover-image-container:hover .hover-img-hidden {
     opacity: 1;
+}
+
+/* =========================
+     Y2K adorable theme helpers
+     ========================= */
+:root {
+    --y2k-pink-100: #ffe2ec;
+    --y2k-pink-200: #ffcfe0;
+    --y2k-pink-300: #ffb7cf;
+    --y2k-pink-400: #ff8ba0;
+    --y2k-rose-600: #D62828;
+    --y2k-rose-700: #A01B1B;
+}
+
+/* Big rounded header with checkerboard */
+.site-header {
+    padding: 0 !important;
+    overflow: hidden;
+    border-radius: 24px;
+}
+.site-header > div,
+.site-header .y2k-header-wrap {
+    padding: 1.25rem 1rem;
+    background:
+        linear-gradient(0deg, rgba(255,255,255,0.15), rgba(255,255,255,0.15)),
+        repeating-linear-gradient(45deg, var(--y2k-pink-200) 0 10px, var(--y2k-pink-100) 10px 20px);
+}
+
+/* Connector bar spacing tweak */
+.connector-bar { margin-top: -6px; }
+.connector-line { border-radius: 3px; }
+.connector-dot { border-radius: 6px; }
+
+/* Content area grid similar to screenshot: main column + skinny widgets column */
+.site-content {
+    padding: 0.25rem;
+}
+.site-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.25rem;
+}
+@media (max-width: 900px) {
+    .site-content-grid { grid-template-columns: 1fr; }
+}
+
+/* Widget boxes on the right */
+.y2k-widget .boxy-window-title {
+    background-color: var(--y2k-pink-300);
+}
+.y2k-widget .widget-body {
+    padding: 0.75rem 1rem 1rem;
+}
+
+/* Cute title pills for sections */
+.y2k-pill-title {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 3px solid var(--y2k-rose-600);
+    background: var(--y2k-pink-300);
+    color: #7a1230;
+    border-radius: 999px;
+    box-shadow: 2px 2px 0 var(--y2k-rose-700);
+    font-weight: 800;
 }

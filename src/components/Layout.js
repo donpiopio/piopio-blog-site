@@ -8,14 +8,6 @@ const Layout = ({ header, nav, children }) => {
           {header}
         </header>
 
-        {/* Connector bar between header and the two columns */}
-        <div className="connector-bar" aria-hidden="true">
-          <span className="connector-line connector-nav" />
-          <span className="connector-dot connector-nav-dot" />
-          <span className="connector-line connector-main" />
-          <span className="connector-dot connector-main-dot" />
-        </div>
-
         {/* Left navigation column */}
         <aside className="site-nav">
           {nav}

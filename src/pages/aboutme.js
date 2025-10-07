@@ -18,12 +18,17 @@ const AboutMe = () => {
           <div className="boxy-window-title p-4 w-full">
             <h2 className="text-rose-900 font-bold text-xl">Who Am I?</h2>
           </div>
-          <div className="p-4 text-rose-800 w-full max-w-2xl mx-auto">
-            <p className="mb-6 text-lg">Hi! I'm PioPio, a creative coder, artist, and music lover. I enjoy making websites, drawing original characters, and sharing my favorite tunes. This box is for a big blob of text about myself, my interests, and my journey. You can add as much as you want here!</p>
-            <div className="flex flex-wrap gap-6 justify-center">
-              <img src={require('../images/hachi/nerd_hachi.png')} alt="Nerd Hachi" className="w-40 h-40 object-cover border-2 border-rose-900 shadow-md" />
-              <img src={require('../images/hachi/moving_hachi.jpg')} alt="Moving Hachi" className="w-40 h-40 object-cover border-2 border-rose-900 shadow-md" />
+          <div className="p-4 text-rose-800 w-full mx-auto" style={{ maxWidth: '900px' }}>
+            {/* Upper-left hover image that swaps on hover */}
+            <div className="aboutme-corner">
+              <img src={require('../images/sona/Base with closed mouth and open eyes.png')} alt="Default avatar" className="default-img-visible" />
+              <img src={require('../images/sona/Base with open mouth and eyes.png')} alt="Hover avatar" className="hover-img-hidden" />
             </div>
+            <p className="text-lg">
+              Hi, I'm PioPio (or Myron if you met me in person)! I made this website because I wanted a central place for people and friends to both learn about me and to see some of the work I've created!
+              <br /><br />Aside from my work in Computer Science as a Machine Learning Engineer, I also have lots of hobbies and projects revolving around some of my creative outlets, which include stuff like 3D modeling, Voice Acting, and my own original characters for DnD.
+              <br /><br />I also have some smaller fact style stuff about me below if you wanna read more!
+            </p>
           </div>
         </section>
       </div>

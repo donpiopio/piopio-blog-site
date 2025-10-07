@@ -15,9 +15,9 @@ const Navigation = () => (
   <a href="#contact" className="text-rose-900 block text-center px-3 py-1 text-sm hover:bg-rose-500 hover:text-white transition-colors duration-200"><span className="nav-link-text">Contact Me!</span></a>
       <div className="px-3 py-1 bg-rose-200 border-2 border-rose-900 rounded-t font-extrabold text-lg text-rose-900 tracking-wide mt-2 mb-0.5">Resume/Creations</div>
   <Link to="/resume" className="text-rose-900 block text-center px-3 py-1 text-sm hover:bg-rose-500 hover:text-white transition-colors duration-200 border-b-2 border-rose-900"><span className="nav-link-text">Resume</span></Link>
-  <a href="#projects" className="text-rose-900 block text-center px-3 py-1 text-sm hover:bg-rose-500 hover:text-white transition-colors duration-200"><span className="nav-link-text">Projects</span></a>
+  <Link to="/projects" className="text-rose-900 block text-center px-3 py-1 text-sm hover:bg-rose-500 hover:text-white transition-colors duration-200 border-b-2 border-rose-900"><span className="nav-link-text">Projects</span></Link>
       <div className="px-3 py-1 bg-rose-200 border-2 border-rose-900 rounded-t font-extrabold text-lg text-rose-900 tracking-wide mt-2 mb-0.5">Fun!</div>
-  <a href="#OC ART" className="text-rose-900 block text-center px-3 py-1 text-sm hover:bg-rose-500 hover:text-white transition-colors duration-200"><span className="nav-link-text">OC's Art</span></a>
+  <a href="#OC Gallery" className="text-rose-900 block text-center px-3 py-1 text-sm hover:bg-rose-500 hover:text-white transition-colors duration-200"><span className="nav-link-text">OC Gallery</span></a>
     </nav>
   </div>
 );

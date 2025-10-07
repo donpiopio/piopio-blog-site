@@ -1,3 +1,46 @@
+/* About Me corner hover image: small, upper-left, wraps text */
+.aboutme-corner {
+    float: left;
+    width: 140px;
+    height: 140px;
+    margin: 0 12px 8px 0; /* right + bottom spacing so text doesn't touch */
+    position: relative;
+    /* Remove box styling to let PNG look natural */
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+}
+.aboutme-corner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.aboutme-corner .hover-img-hidden { opacity: 0; }
+.aboutme-corner:hover .default-img-visible { opacity: 0; }
+.aboutme-corner:hover .hover-img-hidden { opacity: 1; }
+.aboutme-corner:hover { animation: y2k-bounce 0.5s ease; }
+
+@keyframes y2k-bounce {
+    0% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    .aboutme-corner {
+        float: none;
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 12px auto; /* center above text on small screens */
+        display: block;
+    }
+}
 /* Pixel font for music player time numbers */
 .music-player-time {
     font-family: 'Press Start 2P', Pixel, monospace !important;
@@ -129,66 +172,34 @@ h1, h2, h3, .boxy-window-title {
     flex: 0 0 320px; /* Slightly wider for more content */
     min-width: 270px;
     display: flex;
-    flex-direction: column;
-    max-height: 600px; /* Increased max height for more friends */
-    overflow-y: auto; /* Enable vertical scrolling if content overflows */
-}
+    .site-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr; /* left column (nav) + right column (content) */
+        grid-template-rows: auto 1fr; /* header, content */
+        grid-template-areas:
+            "header header"
+            "nav content";
+        gap: 1.25rem;
+        width: min(1200px, 92vw);
+        margin: 1.25rem auto 9rem; /* leave room for footer music player */
+    }
 
-.friends-grid {
-    overflow-y: auto; /* Enable vertical scrolling */
-    flex-grow: 1;
-}
+    .site-header { grid-area: header; padding: 1rem; }
+    .site-nav { grid-area: nav; }
+    .site-content { grid-area: content; }
 
-.home-friends-box img {
-    object-fit: cover;
-    margin-bottom: 0.5rem;
-}
-
-.friend-image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-}
-
-.friend-text {
-    word-wrap: break-word;
-    white-space: normal;
-    display: inline-block;
-    width: 100%;
-}
-/* Navigation Pane Styling - absolutely fixed size across all pages */
-.navigation-pane {
-    flex: 0 0 280px !important; /* Do not grow, do not shrink, base width */
-    min-width: 280px !important;
-    max-width: 280px !important;
-    width: 280px !important;
-    flex-shrink: 0 !important;
-    flex-grow: 0 !important;
-    align-self: flex-start !important; /* Prevent vertical stretching */
-    height: auto !important; /* Let content determine height */
-    max-height: none !important;
-}
-
-/* Force navigation pane sizing in all flex containers with maximum specificity */
-.home-flex-container .navigation-pane,
-.aboutme-flex-container .navigation-pane,
-main .navigation-pane,
-div .navigation-pane {
-    flex: 0 0 280px !important;
-    min-width: 280px !important;
-    max-width: 280px !important;
-    width: 280px !important;
-    flex-shrink: 0 !important;
-    flex-grow: 0 !important;
-    align-self: flex-start !important; /* Prevent vertical stretching */
-    height: auto !important; /* Let content determine height */
-    max-height: none !important;
-}
-
-/* Ensure flex containers use flex-start alignment to prevent stretching */
-.home-flex-container,
-.aboutme-flex-container {
-    align-items: flex-start !important; /* Changed from stretch to flex-start */
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+        .site-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+            grid-template-areas:
+                "header"
+                "nav"
+                "content";
+            gap: 1rem;
+        }
+    }
 }
 
 /* Make sure content areas take up remaining space without affecting navigation */
@@ -393,6 +404,37 @@ body {
 
 .music-progress-fill {
   position: absolute;
+/* Float image box inside About Me content so text wraps nicely */
+.aboutme-float {
+    float: right;
+    width: 220px;
+    margin-left: 1rem; /* space between text and images */
+    margin-bottom: 0.5rem; /* space below the floated block */
+}
+.aboutme-float .aboutme-float-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+}
+.aboutme-float img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border: 2px solid #A01B1B;
+    box-shadow: 2px 2px 0 #A01B1B;
+    background: #ffe2ec;
+}
+@media (max-width: 900px) {
+    .aboutme-float {
+        float: none;
+        width: 100%;
+        margin: 0 0 1rem 0;
+    }
+    .aboutme-float .aboutme-float-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-items: center;
+    }
+}
   top: 0;
   left: 0;
   height: 100%;
@@ -546,4 +588,19 @@ body {
     border-radius: 999px;
     box-shadow: 2px 2px 0 var(--y2k-rose-700);
     font-weight: 800;
+}
+
+/* Y2K button for external links */
+.btn-y2k {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 3px solid var(--y2k-rose-600);
+    background: var(--y2k-pink-300);
+    color: #7a1230;
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--y2k-rose-700);
+    font-weight: 800;
+}
+.btn-y2k:hover {
+    background: var(--y2k-pink-400);
 }

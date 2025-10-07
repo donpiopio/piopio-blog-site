@@ -73,19 +73,8 @@ const Home = () => {
             </div>
             <div className="widget-body">
               <ul className="text-rose-900 text-sm space-y-3">
-                <li><strong>[10/05/25]</strong> Moved all files on-site for better loading (hopefully!).</li>
-                <li><strong>[09/24/25]</strong> Moved Neighbors to a separate page.</li>
+                <li><strong>[10/05/25]</strong> DEV Version of website is currently being worked on, soon to release v1.0</li>
               </ul>
-            </div>
-          </aside>
-
-          <aside className="boxy-window y2k-widget">
-            <div className="boxy-window-title p-3">
-              <span className="y2k-pill-title">Cliques</span>
-            </div>
-            <div className="widget-body grid grid-cols-2 gap-3">
-              <img src={require('../images/songs/gigasoft.jpg')} alt="made by a girl" className="border-2 border-rose-700 shadow" />
-              <img src={require('../images/songs/desktopbuddy.jpeg')} alt="cancer" className="border-2 border-rose-700 shadow" />
             </div>
           </aside>
         </div>

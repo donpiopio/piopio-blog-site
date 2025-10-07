@@ -4,7 +4,7 @@ import Navigation from '../components/Navigation';
 import interests from '../data/interests.json';
 import '../css/main.css';
 
-const DraggableImage = ({ interest, containerSize, onImageClick }) => {
+const DraggableImage = ({ interest, containerSize, onImageClick, zIndex, onDragStart }) => {
   const nodeRef = useRef(null);
   const randomX = Math.random() * (containerSize.width - 150);
   const randomY = Math.random() * (containerSize.height - 150);
@@ -14,15 +14,41 @@ const DraggableImage = ({ interest, containerSize, onImageClick }) => {
     onImageClick(interest);
   };
 
+  const handleStart = () => {
+    onDragStart(interest.id);
+  };
+
   return (
-    <Draggable nodeRef={nodeRef} defaultPosition={{ x: randomX, y: randomY }}>
+    <Draggable 
+      nodeRef={nodeRef} 
+      defaultPosition={{ x: randomX, y: randomY }}
+      onStart={handleStart}
+    >
       <div 
         ref={nodeRef} 
         className="collage-item" 
-        style={{ position: 'absolute', width: '150px', height: '150px', cursor: 'pointer' }}
+        style={{ 
+          position: 'absolute', 
+          width: '150px', 
+          height: '150px', 
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: zIndex
+        }}
         onDoubleClick={handleDoubleClick}
       >
-        <img draggable="false" src={require(`../${interest.src}`)} alt={interest.alt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img 
+          draggable="false" 
+          src={require(`../${interest.src}`)} 
+          alt={interest.alt} 
+          style={{ 
+            maxWidth: '100%', 
+            maxHeight: '100%', 
+            objectFit: 'contain'
+          }} 
+        />
       </div>
     </Draggable>
   );
@@ -32,6 +58,8 @@ const Interests = () => {
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [selectedImage, setSelectedImage] = useState(null);
+  const [zIndexes, setZIndexes] = useState({});
+  const [nextZIndex, setNextZIndex] = useState(2);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -50,6 +78,14 @@ const Interests = () => {
     setSelectedImage(null);
   };
 
+  const handleDragStart = (imageId) => {
+    setZIndexes(prev => ({
+      ...prev,
+      [imageId]: nextZIndex
+    }));
+    setNextZIndex(prev => prev + 1);
+  };
+
   return (
     <div className="p-4 sm:p-8">
       <header className="boxy-window p-6 mb-8 text-center sm:text-left">
@@ -62,7 +98,14 @@ const Interests = () => {
           <div ref={containerRef} className="p-4" style={{ height: '1000px', position: 'relative' }}>
             <div className="collage-container">
               {containerSize.width > 0 && interests.map(interest => (
-                <DraggableImage key={interest.id} interest={interest} containerSize={containerSize} onImageClick={handleImageClick} />
+                <DraggableImage 
+                  key={interest.id} 
+                  interest={interest} 
+                  containerSize={containerSize} 
+                  onImageClick={handleImageClick}
+                  zIndex={zIndexes[interest.id] || 1}
+                  onDragStart={handleDragStart}
+                />
               ))}
             </div>
           </div>
@@ -75,7 +118,14 @@ const Interests = () => {
               </div>
               <div className="p-4">
                 <img src={require(`../${selectedImage.src}`)} alt={selectedImage.alt} className="w-full h-auto max-h-96 object-contain mb-4" />
-                <p className="text-rose-800">{selectedImage.notes}</p>
+                <p className="text-rose-800">
+                  {selectedImage.notes.split('\n').map((line, idx, arr) => (
+                    <span key={idx}>
+                      {line}
+                      {idx < arr.length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
               </div>
             </div>
           </div>

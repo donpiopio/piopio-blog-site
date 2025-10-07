@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "src": "images/hachi/moving_hachi.jpg",
-    "alt": "Moving Hachi",
+    "src": "images/interest_board/daisy_fanart.jpeg",
+    "alt": "Daisy",
     "title": "Moving Hachi",
     "notes": "An animated sprite of my original character, Hachi."
   },
@@ -15,17 +15,17 @@
   },
   {
     "id": 3,
-    "src": "images/songs/desktopbuddy.jpeg",
-    "alt": "Desktop Buddy",
-    "title": "Desktop Buddy - NANORAY",
-    "notes": "Album art for the track 'Desktop Buddy' by NANORAY."
+    "src": "images/interest_board/darkworld_kris.png",
+    "alt": "Kris Deltarune",
+    "title": "Kris Deltarune",
+    "notes": "Easy to say I love this game more than Undertale, Kris is just such an interesting character to follow around as a player."
   },
   {
     "id": 4,
-    "src": "images/songs/gigasoft.jpg",
-    "alt": "Gigasoft",
-    "title": "GIGASOFT INDUSTRIES - HOTEL PARALLAX",
-    "notes": "Album art for the track 'GIGASOFT INDUSTRIES' by HOTEL PARALLAX."
+    "src": "images/interest_board/luz.PNG",
+    "alt": "Owl House",
+    "title": "Luz - Owl House",
+    "notes": "Credits to Artist: @okatah_\nOwl House has made me want to become a witch on all levels, I love see so muuch of myself in every character but Luz I think has taught me alot about accepting myself."
   },
   {
     "id": 5,

@@ -172,41 +172,37 @@ h1, h2, h3, .boxy-window-title {
     flex: 0 0 320px; /* Slightly wider for more content */
     min-width: 270px;
     display: flex;
-    .site-grid {
-        display: grid;
-        grid-template-columns: 280px 1fr; /* left column (nav) + right column (content) */
-        grid-template-rows: auto 1fr; /* header, content */
-        grid-template-areas:
-            "header header"
-            "nav content";
-        gap: 1.25rem;
-        width: min(1200px, 92vw);
-        margin: 1.25rem auto 9rem; /* leave room for footer music player */
-    }
-
-    .site-header { grid-area: header; padding: 1rem; }
-    .site-nav { grid-area: nav; }
-    .site-content { grid-area: content; }
-
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
-        .site-grid {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto auto auto;
-            grid-template-areas:
-                "header"
-                "nav"
-                "content";
-            gap: 1rem;
-        }
-    }
+    flex-direction: column;
+    max-height: 600px; /* Increased max height for more friends */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
 }
 
-/* Make sure content areas take up remaining space without affecting navigation */
-.home-flex-container > *:not(.navigation-pane),
-.aboutme-flex-container > *:not(.navigation-pane) {
-    flex: 1 1 auto;
-    min-width: 0;
+.friends-grid {
+    overflow-y: auto; /* Enable vertical scrolling */
+    flex-grow: 1;
+}
+
+.home-friends-box img {
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+.friend-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.friend-text {
+    word-wrap: break-word;
+    white-space: normal;
+    display: inline-block;
+    width: 100%;
+}
+/* Navigation Pane Styling */
+.navigation-pane {
+    flex: 0 0 250px; /* Do not grow, do not shrink, base width of 250px */
+    min-width: 220px;
 }
 
 .home-middle-box {

@@ -3,7 +3,6 @@ import '../css/main.css';
 import tracks from '../data/tracks.json';
 
 const MusicPlayer = () => {
-  // Removed autoplay popup logic
   const playerRef = useRef(null);
   const [currentTrack, setCurrentTrack] = useState(Math.floor(Math.random() * tracks.length));
   const [playerReady, setPlayerReady] = useState(false);
@@ -94,7 +93,6 @@ const MusicPlayer = () => {
   }, [isPlaying]);
 
   // Handlers
-  // Removed play prompt handler
   const handlePlayPause = () => {
     if (!playerReady) return;
     const state = playerRef.current.getPlayerState();

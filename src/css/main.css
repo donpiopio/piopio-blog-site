@@ -5,7 +5,6 @@
     height: 140px;
     margin: 0 12px 8px 0; /* right + bottom spacing so text doesn't touch */
     position: relative;
-    /* Remove box styling to let PNG look natural */
     border: none;
     box-shadow: none;
     background: transparent;
@@ -203,6 +202,56 @@ h1, h2, h3, .boxy-window-title {
 .navigation-pane {
     flex: 0 0 250px; /* Do not grow, do not shrink, base width of 250px */
     min-width: 220px;
+}
+.navigation-pane {
+    background: none;
+    padding-bottom: 8px;
+}
+.navigation-pane .boxy-window-title {
+    position: relative;
+}
+.navigation-pane .boxy-window-title h2 {
+    text-shadow: 1px 1px 0 var(--y2k-rose-700);
+}
+.navigation-pane .nav-list { padding: 6px; }
+.navigation-pane .section-label {
+    position: relative;
+    background: var(--y2k-pink-300) !important;
+    box-shadow: 2px 2px 0 var(--y2k-rose-700);
+}
+.navigation-pane .nav-link-row {
+    position: relative;
+    border-left: 2px solid var(--y2k-rose-600);
+    border-right: 2px solid var(--y2k-rose-600);
+    margin-bottom: 2px;
+    background: rgba(255, 255, 255, 0.15);
+}
+.navigation-pane .nav-link-row:hover {
+    background: var(--y2k-pink-300);
+    box-shadow: inset 0 0 0 2px var(--y2k-rose-600);
+}
+.navigation-pane .nav-link-row.active {
+    background: var(--y2k-pink-300);
+    color: #7a1230;
+    box-shadow:
+        inset 0 0 0 2px var(--y2k-rose-600),
+        0 0 10px rgba(214, 40, 40, 0.35),
+        0 0 16px rgba(214, 40, 40, 0.25);
+}
+.navigation-pane .nav-link-row .nav-link-text::after {
+    content: '▸';
+    display: inline-block;
+    opacity: 0;
+    font-size: 1.9em; /* make the sticker bigger */
+    line-height: 1;
+    margin-bottom: 7px;
+    vertical-align: middle;
+    transform: translate(0, -1px); /* nudge up slightly to center */
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.navigation-pane .nav-link-row:hover .nav-link-text::after {
+    opacity: 1;
+    transform: translate(4px, -1px);
 }
 
 .home-middle-box {
@@ -511,7 +560,6 @@ html, body {
     height: 200px;
     transition: transform 0.3s ease-out;
     cursor: pointer;
-    /* Removed border and box-shadow for a cleaner look */
     position: relative; /* Essential for containing absolute child images */
     overflow: hidden; /* Ensures images stay inside the boundary */
 }

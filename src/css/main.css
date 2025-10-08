@@ -419,6 +419,12 @@ html, body {
 
 .music-progress-fill {
   position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #D62828; /* Darker red for played part */
+}
+
 /* Float image box inside About Me content so text wraps nicely */
 .aboutme-float {
     float: right;
@@ -449,11 +455,6 @@ html, body {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         justify-items: center;
     }
-}
-  top: 0;
-  left: 0;
-  height: 100%;
-  background-color: #D62828; /* Darker red for played part */
 }
 
 .music-progress-bar {
@@ -500,6 +501,7 @@ html, body {
   background: #FF8BA0;
 }
 
+/* (Reverted) Use original absolute-centered control layout for desktop player */
 
 
 
@@ -618,4 +620,32 @@ html, body {
 }
 .btn-y2k:hover {
     background: var(--y2k-pink-400);
+}
+
+/* Mobile-only refinements that do not alter desktop layout */
+@media (max-width: 640px) {
+    /* Increase touch target for progress bar */
+    .music-player .music-progress-container { height: 16px; }
+    .music-player .music-progress-bar::-webkit-slider-thumb { height: 22px; width: 12px; }
+    .music-player .music-progress-bar::-moz-range-thumb { height: 22px; width: 12px; }
+
+    /* Tighten time labels slightly so they fit */
+    .music-player-time { font-size: 0.62rem; width: 3.4em; min-width: 3.4em; }
+
+    /* Make left track info more compact */
+    .music-player .text-lg { font-size: 0.95rem; }
+    .music-player .text-sm { font-size: 0.75rem; }
+    .music-player img { width: 28px !important; height: 28px !important; }
+
+    /* Compact the volume box on the right without changing its position */
+    .music-volume-box { padding: 6px 10px !important; }
+    .music-volume-box span { font-size: 0.95rem !important; margin-right: 6px !important; }
+    .music-volume-box .volume-slider-container { width: 4.5rem; height: 8px; }
+
+    /* Prevent overlap: wrap row and stack center controls + volume */
+    .player-row-flex { flex-wrap: wrap; padding-top: 4px; }
+    .player-left { max-width: 60%; }
+    .center-controls { position: static; transform: none; width: 100%; justify-content: flex-end; margin-top: 5px; margin-bottom: 30px; padding-right: 4px; }
+    .center-controls button { font-size: 1.5rem !important; }
+    .music-volume-box { position: static !important; transform: none !important; width: 100%; justify-content: center; margin-top: 12px; }
 }

@@ -145,10 +145,10 @@ const MusicPlayer = () => {
 
   return (
     <>
-  <footer className="fixed bottom-0 left-0 w-full z-50 py-3 sm:py-5 px-3 sm:px-4 border-t-2 border-rose-900 shadow-2xl bg-pink-300 music-player" style={{ minHeight: '82px' }}>
+  <footer className="fixed bottom-0 left-0 w-full z-50 py-5 px-4 border-t-2 border-rose-900 shadow-2xl bg-pink-300 music-player" style={{ minHeight: '82px' }}>
         <div id="youtube-player-container" style={{ display: 'none' }}></div>
 
-        <div className="boxy-window flex flex-col w-full max-w-5xl mx-auto" style={{ padding: '14px 12px 10px 12px' }}>
+  <div className="boxy-window flex flex-col w-full max-w-6xl mx-auto" style={{ padding: '20px 16px 12px 16px' }}>
           <div className="w-full flex items-center gap-2 text-rose-900 mb-3">
             <span className="text-sm w-8 text-left music-player-time">{formatTime(currentTime)}</span>
             <div className="w-full relative flex items-center h-4 music-progress-container">
@@ -170,15 +170,15 @@ const MusicPlayer = () => {
             </div>
             <span className="text-sm w-8 text-right music-player-time">{formatTime(duration)}</span>
           </div>
-          <div className="flex items-center justify-between w-full relative gap-2 sm:gap-0">
-            <div className="flex items-center gap-2 sm:gap-3 flex-shrink min-w-0 max-w-[60%] sm:max-w-[40%]">
+          <div className="player-row-flex flex items-center justify-between w-full relative">
+            <div className="player-left flex items-center space-x-3 flex-shrink min-w-0 max-w-[40%]">
               <img src={require(`../${tracks[currentTrack].imageSrc}`)} alt="Track Art" className="w-10 h-10 object-cover border-2 border-rose-900 shadow-md" />
               <div className="text-rose-900 overflow-hidden">
                 <div className="text-lg font-bold truncate">{tracks[currentTrack].title}</div>
                 <div className="text-sm truncate">{tracks[currentTrack].artist}</div>
               </div>
             </div>
-            <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 space-x-4">
+            <div className="center-controls absolute left-1/2 transform -translate-x-1/2 flex space-x-4">
               <button
                 className="text-rose-900 hover:text-rose-700 transition-colors duration-150 text-3xl"
                 aria-label="Previous Track"
@@ -195,8 +195,8 @@ const MusicPlayer = () => {
                 onClick={handleNext}
               >&gt;&gt;</button>
             </div>
-            {/* Retro/cute themed volume slider on the right (desktop) */}
-            <div className="hidden sm:flex items-center space-x-2 text-rose-900" style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', background: '#f7b6c2', border: '2px solid #c80040', borderRadius: '8px', padding: '8px 16px', boxShadow: '2px 2px 0 #c80040' }}>
+            {/* Retro/cute themed volume slider on the right */}
+            <div className="music-volume-box flex items-center space-x-2 text-rose-900" style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', background: '#f7b6c2', border: '2px solid #c80040', borderRadius: '8px', padding: '8px 16px', boxShadow: '2px 2px 0 #c80040' }}>
               <span style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#c80040', marginRight: '8px', fontFamily: 'Montserrat, Arial, sans-serif' }}>VOL</span>
               <div className="volume-slider-container">
                 <div className="volume-slider-track">
@@ -214,23 +214,7 @@ const MusicPlayer = () => {
               </div>
             </div>
           </div>
-          {/* Mobile controls row */}
-          <div className="flex sm:hidden items-center justify-between mt-2 gap-3 text-rose-900">
-            <div className="flex items-center gap-4">
-              <button className="text-2xl" aria-label="Previous Track" onClick={handlePrev}>&lt;&lt;</button>
-              <button className="text-2xl" aria-label="Play/Pause" onClick={handlePlayPause}>{isPlaying ? '\u23f8' : '\u25b6'}</button>
-              <button className="text-2xl" aria-label="Next Track" onClick={handleNext}>&gt;&gt;</button>
-            </div>
-            <div className="flex items-center gap-2" style={{ background: '#f7b6c2', border: '2px solid #c80040', borderRadius: '8px', padding: '6px 10px', boxShadow: '2px 2px 0 #c80040' }}>
-              <span style={{ fontWeight: 'bold', fontSize: '1rem', color: '#c80040' }}>VOL</span>
-              <div className="volume-slider-container" style={{ width: '5rem' }}>
-                <div className="volume-slider-track">
-                  <div className="volume-slider-fill" style={{ width: `${volume * 100}%` }}></div>
-                </div>
-                <input type="range" min="0" max="1" step="0.01" value={volume} className="music-volume-slider" onChange={handleVolume} />
-              </div>
-            </div>
-          </div>
+          
         </div>
       </footer>
     </>

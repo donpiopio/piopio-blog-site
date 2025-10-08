@@ -37,29 +37,15 @@
   {
     "id": 6,
     "src": "images/interest_board/shadow.png",
-    "alt": "Sans",
-    "title": "Sanasational - T\"zalt",
-    "notes": "Album art for the track 'Sanasational (Instrumental)' by T\"zalt."
+    "alt": "Shadow",
+    "title": "Shadow the Hedgehog",
+    "notes": "He's just like me fr."
   },
   {
     "id": 7,
-    "src": "images/songs/upsidedown.jpg",
+    "src": "images/interest_board/blue_lock.png",
     "alt": "Upside Down",
     "title": "my room is upside down - Deathbrain",
     "notes": "Album art for the track 'my room is upside down' by Deathbrain."
-  },
-  {
-    "id": 8,
-    "src": "images/songs/yokai_disco.jpg",
-    "alt": "Yokai Disco",
-    "title": "Yokai Disco - Telan Devik",
-    "notes": "Album art for the track 'Yokai Disco' by Telan Devik."
-  },
-  {
-    "id": 9,
-    "src": "images/frens/most_beautiful_girl_in_da_world.png",
-    "alt": "A beautiful girl",
-    "title": "Pixel Portrait",
-    "notes": "A pixel art portrait of a friend."
   }
 ]

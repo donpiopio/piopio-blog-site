@@ -6,7 +6,6 @@ const Navigation = () => (
   <div id="navigation" className="boxy-window navigation-pane">
     <div className="boxy-window-title px-3 py-2">
       <h2 className="text-rose-900 font-bold text-2xl">Navigation</h2>
-      <h2 className="text-rose-900 font-bold text-2xl">Navigation</h2>
     </div>
     <nav className="flex flex-col">
       <div className="px-3 py-1 bg-rose-200 border-2 border-rose-900 rounded-t font-extrabold text-lg text-rose-900 tracking-wide mb-0.5">Personal</div>

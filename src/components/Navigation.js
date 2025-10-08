@@ -19,6 +19,7 @@ const Navigation = () => (
   <Link to="/projects" className="text-rose-900 block text-center px-3 py-1 text-sm hover:bg-rose-500 hover:text-white transition-colors duration-200 border-b-2 border-rose-900"><span className="nav-link-text">Projects</span></Link>
       <div className="px-3 py-1 bg-rose-200 border-2 border-rose-900 rounded-t font-extrabold text-lg text-rose-900 tracking-wide mt-2 mb-0.5">Fun!</div>
   <a href="#OC Gallery" className="text-rose-900 block text-center px-3 py-1 text-sm hover:bg-rose-500 hover:text-white transition-colors duration-200"><span className="nav-link-text">OC Gallery</span></a>
+  <Link to="/guestbook" className="text-rose-900 block text-center px-3 py-1 text-sm hover:bg-rose-500 hover:text-white transition-colors duration-200"><span className="nav-link-text">Guestbook</span></Link>
     </nav>
   </div>
 );

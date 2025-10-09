@@ -6,6 +6,7 @@ import Guestbook from './pages/Guestbook';
 import MusicPlayer from './pages/MusicPlayer';
 import Resume from './pages/Resume';
 import Connect from './pages/Connect';
+import Buttons from './pages/Buttons';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/guestbook" element={<Guestbook />} />
           <Route path="/connect" element={<Connect />} />
+          <Route path="/buttons" element={<Buttons />} />
         </Routes>
         <MusicPlayer />
       </Router>

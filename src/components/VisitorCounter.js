@@ -8,8 +8,7 @@ const VisitorCounter = () => {
     // Function to fetch visitor count from GoatCounter API
     const fetchVisitorCount = async () => {
       try {
-        // Note: Replace 'piopio-blog' with your actual GoatCounter site code
-        const response = await fetch('https://piopio.goatcounter.com/counter/total.json');
+        const response = await fetch('https://piopio.goatcounter.com/counter//.json');
         const data = await response.json();
         
         if (data && data.count) {
@@ -72,7 +71,7 @@ const VisitorCounter = () => {
         <div className="visitor-counter-display">
           <div className="counter-label">Total Unique Visitors</div>
           <div className="counter-number">{visitorCount.toLocaleString()}</div>
-          <div className="counter-subtitle">Thanks for visiting! ♡</div>
+          <div className="counter-subtitle">Stats collected from GoatCounter!</div>
         </div>
       </div>
     </aside>

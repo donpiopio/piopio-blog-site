@@ -21,12 +21,10 @@ const RandomFacts = () => {
   ];
 
   const [currentFact, setCurrentFact] = useState("");
-  const [isVisible, setIsVisible] = useState(false);
 
   const generateFact = () => {
     const randomIndex = Math.floor(Math.random() * facts.length);
     setCurrentFact(facts[randomIndex]);
-    setIsVisible(true);
   };
 
   return (

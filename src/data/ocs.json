@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "PioPio",
+    "mainImage": "images/sona/piopio_pfp.png",
+    "age": "my age",
+    "species": "Human",
+    "occupation": "My Persona",
+    "personality": "my personality",
+    "backstory": "This actually started out as a birthday gift from my old roommate who made me a pokemon trainer version of myself. I started using it as my online persona, while slowly getting some more updated versions of it, the one you see around the site is what I use today!",
+    "funFacts": [
+      "The bag they're wearing contains blind box collectibles, particularly Smiskis and Peach Riot figures."
+    ],
+    "details": ".",
+    "images": [
+      { "id": 2, "src": "images/sona/piopio_ref.png", "alt": "Latest Reference Image", "description": "Credits to Artist: Lonesomeocean\nA reference sheet for myself or anyone who needs it, this is the latest design I use for everything now!" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "JennStar",
+    "mainImage": "images/sona/piopio_pfp.png",
+    "age": "also my age",
+    "species": "Human",
+    "occupation": "JennStar's Persona",
+    "personality": "her personality",
+    "backstory": "This actually started out as a birthday gift from my old roommate who made me a pokemon trainer version of myself. I started using it as my online persona, while slowly getting some more updated versions of it, the one you see around the site is what I use today!",
+    "funFacts": [
+      "The bag they're wearing contains blind box collectibles, particularly Smiskis and Peach Riot figures."
+    ],
+    "details": ".",
+    "images": [
+      { "id": 2, "src": "images/sona/piopio_ref.png", "alt": "Reference Image", "description": "Default Outfit and Design I now use" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Milo",
+    "mainImage": "images/OCs/milo/milo_pfp.jpg",
+    "age": "~25",
+    "species": "Halfling",
+    "occupation": "Luchador/Monk",
+    "personality": "my personality",
+    "backstory": "Milo started out out learning how to fight from an old monk who lived in an abandoned temple in the jungle near his home. Hoping to learn less boring stuff and focus more on fighting he followed a travelling troupe of fighters to the Astrodome!",
+    "funFacts": [
+      "They don't contain any outfits that aren't just luchador themed."
+    ],
+    "details": ".",
+    "images": [
+      { "id": 2, "src": "images/OCs/milo/milo_first_design.jpg", "alt": "First Milo Design", "description": "Credit to Artist: AlexSanders\n My first commissioned actual art of Milo, I liked the tattoo/outfit we came up with, but the size made him look too human, so after a while a while I decided to move from this one" },
+      { "id": 3, "src": "images/OCs/milo/dnd_group.jpg", "alt": "DnD Group Cuddle", "description": "Credit to Artist: miithers\n A group shot of the whole party in a cuddle pile, organized by Micachu for the end of our campaign!" },
+      { "id": 4, "src": "images/OCs/milo/final_milo.jpg", "alt": "Newest Milo Design", "description": "Credit to Artist: Raf4Art\n An active pose for Milo, he's much more halfling sized here and he's showing off his very confident/fun demeanor when it comes to fighting." }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Elowyn Knowlesworth",
+    "mainImage": "images/OCs/elowyn/elowyn_pfp.png",
+    "age": "30",
+    "species": "Gnome",
+    "occupation": "Hunter Captain",
+    "personality": "Spoiled Gifted Child",
+    "backstory": "This actually started out as a birthday gift from my old roommate who made me a pokemon trainer version of myself. I started using it as my online persona, while slowly getting some more updated versions of it, the one you see around the site is what I use today!",
+    "funFacts": [
+      "The bag they're wearing contains blind box collectibles, particularly Smiskis and Peach Riot figures."
+    ],
+    "details": ".",
+    "images": [
+      { "id": 2, "src": "images/OCs/elowyn/elowyncomm.png", "alt": "Reference Image", "description": "Credit to Artist: RainSlices\nCommission of a reference of Elowyn in her Hunter Captain outfit." }
+    ]
+  }
+]

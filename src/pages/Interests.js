@@ -90,7 +90,7 @@ const Interests = () => {
   const header = (
     <div className="p-4 text-center sm:text-left">
       <h1 className="text-3xl sm:text-4xl text-rose-900 font-bold mb-2">Interest Board</h1>
-      <p className="text-xl text-rose-800">A collection of things I find cool.</p>
+      <p className="text-xl text-rose-800">These things tickle my brain.</p>
     </div>
   );
 

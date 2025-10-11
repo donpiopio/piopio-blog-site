@@ -25,7 +25,7 @@ const Guestbook = () => {
   const header = (
     <div className="p-4 text-center sm:text-left">
       <h1 className="text-3xl sm:text-4xl text-rose-900 font-bold mb-2">Guestbook</h1>
-      <p className="text-xl text-rose-800">Say hi and leave a sweet message ♡</p>
+      <p className="text-xl text-rose-800">Leave me a message on your way out!</p>
     </div>
   );
 
@@ -162,7 +162,7 @@ const Guestbook = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="w-full border-2 border-rose-900 px-3 py-2 bg-pink-50 focus:outline-none min-h-[120px]"
-                placeholder="Write something cute!"
+                placeholder="Leave me a message!"
                 maxLength={1000}
                 required
               />

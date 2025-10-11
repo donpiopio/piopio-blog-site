@@ -4,10 +4,9 @@ import Navigation from '../components/Navigation';
 import '../css/main.css';
 
 const socials = [
-  { label: 'BlueSky', href: 'https://bluesky.com/', slug: 'bluesky' },
-  { label: 'TikTok', href: 'https://tiktok.com/@your-handle', slug: 'tiktok' },
-  { label: 'GitHub', href: 'https://github.com/your-handle', slug: 'github' },
-  { label: 'YouTube', href: 'https://youtube.com/@your-handle', slug: 'youtube' },
+  { label: 'BlueSky', href: 'https://bluesky.com/donpiopio', slug: 'bluesky' },
+  { label: 'TikTok', href: 'https://tiktok.com/@don.piopio', slug: 'tiktok' },
+  { label: 'GitHub', href: 'https://github.com/donpiopio', slug: 'github' },
 ];
 
 function SocialIcon({ slug, alt }) {
@@ -37,7 +36,7 @@ export default function Connect() {
   const header = (
     <div className="p-4 text-center sm:text-left">
       <h1 className="text-3xl sm:text-4xl text-rose-900 font-bold mb-2">Connect with Me</h1>
-      <p className="text-xl text-rose-800">Find me on the web ✿</p>
+      <p className="text-xl text-rose-800">Peek at my other socials!</p>
     </div>
   );
 

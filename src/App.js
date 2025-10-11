@@ -7,6 +7,7 @@ import MusicPlayer from './pages/MusicPlayer';
 import Resume from './pages/Resume';
 import Connect from './pages/Connect';
 import Buttons from './pages/Buttons';
+import OCGallery from './pages/OCGallery';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/guestbook" element={<Guestbook />} />
           <Route path="/connect" element={<Connect />} />
           <Route path="/buttons" element={<Buttons />} />
+          <Route path="/oc-gallery" element={<OCGallery />} />
         </Routes>
         <MusicPlayer />
       </Router>

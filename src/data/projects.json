@@ -3,8 +3,8 @@
     "id": "proj-1",
     "title": "MScape",
     "subtitle": "Song Generative Synthwave Visualizer",
-    "description": "A fun project I plan to revisit and revamp soon, generates a environment where the Mscape Car can drive that's based on the song playing! This started as a concept project I made with my friend in college some time ago, so it doesnt have all the features we eventually wanted to add yet (different vehicles, starting page, etc.)",
-    "image": "images/interest_board/daisy_fanart.jpeg",
+    "description": "A fun project I plan to revisit and revamp soon, generates a environment where the Mscape Car can drive that's based on the song playing! This started as a concept project I made with my friend in college some time ago, to test our knowledge of OpenGL and what we could do, so it doesnt have all the features we eventually wanted to add yet (different vehicles, starting page, etc.).",
+    "image": "images/project_thumbnails/mscape-test.PNG",
     "link": "https://donpiopio.github.io/mscape/src"
   }
 ]

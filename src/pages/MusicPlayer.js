@@ -10,6 +10,7 @@ const MusicPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.7);
+  const [isMinimized, setIsMinimized] = useState(false);
 
   // Load YouTube IFrame API
   useEffect(() => {
@@ -141,13 +142,58 @@ const MusicPlayer = () => {
     return `${minutes}:${paddedSeconds}`;
   }
 
+  // Toggle minimize/maximize
+  const toggleMinimize = () => {
+    setIsMinimized(!isMinimized);
+  };
+
   return (
     <>
-  <footer className="fixed bottom-0 left-0 w-full z-50 py-5 px-4 border-t-2 border-rose-900 shadow-2xl bg-pink-300 music-player" style={{ minHeight: '82px' }}>
+      <footer className={`fixed bottom-0 left-0 w-full z-50 py-5 px-4 border-t-2 border-rose-900 shadow-2xl bg-pink-300 music-player transition-all duration-300 ${isMinimized ? 'minimized' : ''}`} style={{ minHeight: isMinimized ? '60px' : '82px' }}>
         <div id="youtube-player-container" style={{ display: 'none' }}></div>
 
-  <div className="boxy-window flex flex-col w-full max-w-6xl mx-auto" style={{ padding: '20px 16px 12px 16px' }}>
-          <div className="w-full flex items-center gap-2 text-rose-900 mb-3">
+        {/* Minimize/Maximize Button */}
+        <button 
+          className="minimize-btn"
+          onClick={toggleMinimize}
+          aria-label={isMinimized ? "Expand Music Player" : "Minimize Music Player"}
+        >
+          {isMinimized ? '▲' : '▼'}
+        </button>
+
+        <div className={`boxy-window flex flex-col w-full max-w-6xl mx-auto transition-all duration-300 ${isMinimized ? 'minimized-content' : ''}`} style={{ padding: isMinimized ? '8px 16px' : '20px 16px 12px 16px' }}>
+          
+          {/* Minimized View */}
+          {isMinimized ? (
+            <div className="flex items-center justify-between w-full">
+              <div className="flex items-center space-x-3 flex-shrink min-w-0">
+                <img src={require(`../${tracks[currentTrack].imageSrc}`)} alt="Track Art" className="w-8 h-8 object-cover border-2 border-rose-900 shadow-md" />
+                <div className="text-rose-900 overflow-hidden">
+                  <div className="text-sm font-bold truncate">{tracks[currentTrack].title}</div>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <button
+                  className="text-rose-900 hover:text-rose-700 transition-colors duration-150 text-xl"
+                  aria-label="Previous Track"
+                  onClick={handlePrev}
+                >&lt;&lt;</button>
+                <button
+                  className="text-rose-900 hover:text-rose-700 transition-colors duration-150 text-xl"
+                  aria-label="Play/Pause"
+                  onClick={handlePlayPause}
+                >{isPlaying ? '⏸' : '▶'}</button>
+                <button
+                  className="text-rose-900 hover:text-rose-700 transition-colors duration-150 text-xl"
+                  aria-label="Next Track"
+                  onClick={handleNext}
+                >&gt;&gt;</button>
+              </div>
+            </div>
+          ) : (
+            /* Expanded View */
+            <>
+              <div className="w-full flex items-center gap-2 text-rose-900 mb-3">
             <span className="text-sm w-8 text-left music-player-time">{formatTime(currentTime)}</span>
             <div className="w-full relative flex items-center h-4 music-progress-container">
               <div className="music-progress-track">
@@ -211,7 +257,9 @@ const MusicPlayer = () => {
                 />
               </div>
             </div>
-          </div>
+              </div>
+            </>
+          )}
           
         </div>
       </footer>

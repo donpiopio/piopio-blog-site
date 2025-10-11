@@ -1,9 +1,81 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/main.css';
 import Navigation from '../components/Navigation';
 import Layout from '../components/Layout';
+import VisitorCounter from '../components/VisitorCounter';
 import friendsData from '../data/friends.json';
+
+<script data-goatcounter="https://piopio.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+const FriendsGrid = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const friendsPerPage = 4; // 2x2 grid
+  const totalPages = Math.ceil(friendsData.length / friendsPerPage);
+
+  const getCurrentFriends = () => {
+    const startIndex = currentPage * friendsPerPage;
+    const endIndex = startIndex + friendsPerPage;
+    return friendsData.slice(startIndex, endIndex);
+  };
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  return (
+    <div className="boxy-window mt-4">
+      <div className="boxy-window-title p-3 flex justify-between items-center">
+        <h2 className="text-rose-900 font-bold text-lg">My Friends</h2>
+        <div className="flex gap-2">
+          <button 
+            onClick={prevPage} 
+            className="arrow-btn"
+            disabled={totalPages <= 1}
+          >
+            ◀
+          </button>
+          <span className="text-rose-700 text-sm">{currentPage + 1}/{totalPages}</span>
+          <button 
+            onClick={nextPage} 
+            className="arrow-btn"
+            disabled={totalPages <= 1}
+          >
+            ▶
+          </button>
+        </div>
+      </div>
+      <div className="p-3">
+        <div className="friends-2x2-grid">
+          {getCurrentFriends().map((friend, index) => (
+            <div key={index} className="friend-item">
+              <a href={friend.url} target="_blank" rel="noopener noreferrer">
+                <img
+                  src={friend.image.startsWith('http') ? friend.image : require(`../${friend.image}`)}
+                  alt={`Pixel art of ${friend.name}`}
+                  className="friend-grid-image"
+                />
+              </a>
+              <a 
+                href={friend.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="friend-grid-name"
+              >
+                {friend.name}
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Home = () => {
   const header = (
@@ -14,7 +86,10 @@ const Home = () => {
   );
 
   const nav = (
-    <Navigation />
+    <div>
+      <Navigation />
+      <FriendsGrid />
+    </div>
   );
 
   return (
@@ -41,28 +116,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* FRIENDS BLOCK */}
-        <section id="friends" className="boxy-window">
-          <div className="boxy-window-title p-4">
-            <h2 className="text-rose-900 font-bold text-xl">My Friends</h2>
-          </div>
-          <div className="p-4 grid grid-cols-3 grid-rows-2 gap-4 justify-items-center friends-grid">
-            {friendsData.map((friend, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
-                <a href={friend.url} target="_blank" rel="noopener noreferrer" className="w-full">
-                  <img
-                    src={friend.image.startsWith('http') ? friend.image : require(`../${friend.image}`)}
-                    alt={`Pixel art of ${friend.name}`}
-                    className="friend-image w-full max-w-[80px] mx-auto aspect-square object-cover shadow-lg border-2 border-rose-700 transition-transform duration-200 hover:scale-110"
-                  />
-                </a>
-                <a href={friend.url} target="_blank" rel="noopener noreferrer" className="mt-2 text-rose-900 font-semibold hover:underline friend-text" style={{ fontSize: '0.85em' }}>
-                  {friend.name}
-                </a>
-              </div>
-            ))}
-          </div>
-        </section>
+
         </div>
 
         {/* WIDGETS COLUMN (right) */}
@@ -77,6 +131,8 @@ const Home = () => {
               </ul>
             </div>
           </aside>
+          
+          <VisitorCounter />
         </div>
       </div>
     </Layout>

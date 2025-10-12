@@ -1749,3 +1749,72 @@ html, body {
         padding: 15px;
     }
 }
+
+/* Interest Popup Modal Styles */
+.interest-popup-modal {
+    background: var(--y2k-pink-100);
+    border: 3px solid var(--y2k-rose-600);
+    border-radius: 15px;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.interest-popup-content {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.interest-text-container {
+    overflow-y: auto;
+    max-height: 300px;
+    padding-right: 8px;
+}
+
+.interest-text-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.interest-text-container::-webkit-scrollbar-track {
+    background: var(--y2k-pink-200);
+    border-radius: 4px;
+}
+
+.interest-text-container::-webkit-scrollbar-thumb {
+    background: var(--y2k-rose-400);
+    border-radius: 4px;
+}
+
+/* Mobile responsive adjustments for interest popup */
+@media (max-width: 768px) {
+    .interest-popup-modal {
+        max-width: 95vw;
+        max-height: 85vh;
+        margin: 10px;
+    }
+    
+    .interest-popup-content {
+        padding: 15px;
+    }
+    
+    .interest-text-container {
+        max-height: 200px;
+        font-size: 14px;
+    }
+    
+    .interest-popup-modal img {
+        max-height: 200px !important;
+    }
+    
+    .interest-popup-modal .boxy-window-title h2 {
+        font-size: 16px;
+    }
+}

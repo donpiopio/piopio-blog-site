@@ -116,21 +116,30 @@ const Interests = () => {
       </div>
 
       {selectedImage && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={handleClosePane}>
-          <div className="boxy-window max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
-            <div className="boxy-window-title p-4">
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={handleClosePane}>
+          <div className="interest-popup-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="boxy-window-title p-4 flex justify-between items-center">
               <h2 className="text-rose-900 font-bold text-xl">{selectedImage.title}</h2>
+              <button 
+                onClick={handleClosePane}
+                className="text-rose-600 hover:text-rose-800 text-2xl font-bold leading-none"
+                aria-label="Close"
+              >
+                ×
+              </button>
             </div>
-            <div className="p-4">
-              <img src={require(`../${selectedImage.src}`)} alt={selectedImage.alt} className="w-full h-auto max-h-96 object-contain mb-4" />
-              <p className="text-rose-800">
-                {selectedImage.notes.split('\n').map((line, idx, arr) => (
-                  <span key={idx}>
-                    {line}
-                    {idx < arr.length - 1 && <br />}
-                  </span>
-                ))}
-              </p>
+            <div className="interest-popup-content">
+              <img src={require(`../${selectedImage.src}`)} alt={selectedImage.alt} className="w-full h-auto max-h-64 object-contain mb-4" />
+              <div className="interest-text-container">
+                <p className="text-rose-800">
+                  {selectedImage.notes.split('\n').map((line, idx, arr) => (
+                    <span key={idx}>
+                      {line}
+                      {idx < arr.length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
+              </div>
             </div>
           </div>
         </div>

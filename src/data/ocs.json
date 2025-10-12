@@ -13,24 +13,26 @@
     ],
     "details": ".",
     "images": [
-      { "id": 2, "src": "images/sona/piopio_ref.png", "alt": "Latest Reference Image", "description": "Credits to Artist: Lonesomeocean\nA reference sheet for myself or anyone who needs it, this is the latest design I use for everything now!" }
+      { "id": 2, "src": "images/sona/piopio_ref.png", "alt": "Latest Reference Image", "description": "Credits to Artist: Lonesomeocean\\nA reference sheet for myself or anyone who needs it, this is the latest design I use for everything now!" }
     ]
   },
   {
     "id": 2,
     "name": "JennStar",
-    "mainImage": "images/sona/piopio_pfp.png",
+    "mainImage": "images/frens/most_beautiful_girl_in_da_world.png",
     "age": "also my age",
     "species": "Human",
     "occupation": "JennStar's Persona",
     "personality": "her personality",
-    "backstory": "This actually started out as a birthday gift from my old roommate who made me a pokemon trainer version of myself. I started using it as my online persona, while slowly getting some more updated versions of it, the one you see around the site is what I use today!",
+    "backstory": "My partner also wanted a Sona so that we could have matching ones! This way whenever I draw or commission art, we can have both of us in it!",
     "funFacts": [
-      "The bag they're wearing contains blind box collectibles, particularly Smiskis and Peach Riot figures."
+      "When making the design, we based it on a version of Dawn from the Pokemon series!"
     ],
     "details": ".",
     "images": [
-      { "id": 2, "src": "images/sona/piopio_ref.png", "alt": "Reference Image", "description": "Default Outfit and Design I now use" }
+      { "id": 1, "src": "images/OCs/jennstar/fullbodyref.png", "alt": "Front Reference", "description": "Credits to Artist: ruuruuart\\nThe full body reference for JennStar." },
+      { "id": 2, "src": "images/OCs/jennstar/chibi_couple.png", "alt": "Chibi Version With Maushold", "description": "Credits to Artist: mirai\\nSince our sona's are based on Pokemon trainers we included a pokemon we both loved!" },
+      { "id": 3, "src": "images/OCs/jennstar/matching_pfp.png", "alt": "Matching Profile Picture", "description": "Credits to Artist: RindessG\\nWe wanted to create a matching profile picture for both of our personas! So here's the current one we use of use making a heart with our hands!" }
     ]
   },
   {
@@ -41,32 +43,32 @@
     "species": "Halfling",
     "occupation": "Luchador/Monk",
     "personality": "my personality",
-    "backstory": "Milo started out out learning how to fight from an old monk who lived in an abandoned temple in the jungle near his home. Hoping to learn less boring stuff and focus more on fighting he followed a travelling troupe of fighters to the Astrodome!",
+    "backstory": "Milo started out out learning how to fight from an old monk who lived in an abandoned temple in the jungle near his home. Hoping to learn less boring stuff and focus more on fighting he followed a travelling troupe of fighters to the Astrodome! That's how he became the lucha-obsessed freak he is today, however after coming back from his short term adventure, he's come to find his home destroyed and his teacher at fault. ",
     "funFacts": [
-      "They don't contain any outfits that aren't just luchador themed."
+      "They don't have any outfits that aren't just luchador themed."
     ],
     "details": ".",
     "images": [
-      { "id": 2, "src": "images/OCs/milo/milo_first_design.jpg", "alt": "First Milo Design", "description": "Credit to Artist: AlexSanders\n My first commissioned actual art of Milo, I liked the tattoo/outfit we came up with, but the size made him look too human, so after a while a while I decided to move from this one" },
-      { "id": 3, "src": "images/OCs/milo/dnd_group.jpg", "alt": "DnD Group Cuddle", "description": "Credit to Artist: miithers\n A group shot of the whole party in a cuddle pile, organized by Micachu for the end of our campaign!" },
-      { "id": 4, "src": "images/OCs/milo/final_milo.jpg", "alt": "Newest Milo Design", "description": "Credit to Artist: Raf4Art\n An active pose for Milo, he's much more halfling sized here and he's showing off his very confident/fun demeanor when it comes to fighting." }
+      { "id": 2, "src": "images/OCs/milo/milo_first_design.jpg", "alt": "First Milo Design", "description": "Credit to Artist: AlexSanders\\n My first commissioned actual art of Milo, I liked the tattoo/outfit we came up with, but the size made him look too human, so after a while a while I decided to move from this one" },
+      { "id": 3, "src": "images/OCs/milo/dnd_group.jpg", "alt": "DnD Group Cuddle", "description": "Credit to Artist: miithers\\n A group shot of the whole party in a cuddle pile, organized by Micachu for the end of our campaign!" },
+      { "id": 4, "src": "images/OCs/milo/final_milo.jpg", "alt": "Newest Milo Design", "description": "Credit to Artist: Raf4Art\\n An active pose for Milo, he's much more halfling sized here and he's showing off his very confident/fun demeanor when it comes to fighting." }
     ]
   },
   {
     "id": 4,
     "name": "Elowyn Knowlesworth",
     "mainImage": "images/OCs/elowyn/elowyn_pfp.png",
-    "age": "30",
+    "age": "~30",
     "species": "Gnome",
     "occupation": "Hunter Captain",
     "personality": "Spoiled Gifted Child",
-    "backstory": "This actually started out as a birthday gift from my old roommate who made me a pokemon trainer version of myself. I started using it as my online persona, while slowly getting some more updated versions of it, the one you see around the site is what I use today!",
+    "backstory": "A gifted child from an already gifted family, Elowyn became the seemingly godsent wizard prodigy that the Knowlesworth family had been secretly hoping for. However, after hitting a wall in her studies (and some well earned burn out/impostor syndrome) she decided to run away from the expectations and become a Hunter in a guild, changing her identity to avoid being found. It's been years and she hasn't been found out yet, but neither has she learned a single new spell. Soon though, her family ties would catch up to her as the town's fate rests in her party's hands...",
     "funFacts": [
-      "The bag they're wearing contains blind box collectibles, particularly Smiskis and Peach Riot figures."
+      "Some of the pages in her spell book are secretly just fanfic she writes when bored."
     ],
     "details": ".",
     "images": [
-      { "id": 2, "src": "images/OCs/elowyn/elowyncomm.png", "alt": "Reference Image", "description": "Credit to Artist: RainSlices\nCommission of a reference of Elowyn in her Hunter Captain outfit." }
+      { "id": 2, "src": "images/OCs/elowyn/elowyncomm.png", "alt": "Reference Image", "description": "Credit to Artist: RainSlices\\nCommission of a reference of Elowyn in her Hunter Captain outfit." }
     ]
   }
 ]

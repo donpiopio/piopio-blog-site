@@ -40,5 +40,35 @@
     "artist": "Deathbrain",
     "videoId": "Oq1UZDDnhrY",
     "imageSrc": "images/songs/upsidedown.jpg"
+  },
+  {
+    "title": "The Sky is Purple",
+    "artist": "strxwberrymilk",
+    "videoId": "gzogMQPt9AU",
+    "imageSrc": "images/songs/sky_is_purple.jpg"
+  },
+  {
+    "title": "Gloss",
+    "artist": "Kaizo Slumber",
+    "videoId": "ctqLGsUEk20",
+    "imageSrc": "images/songs/gloss.jpg"
+  },
+  {
+    "title": "Dude move",
+    "artist": "Baba",
+    "videoId": "dHmQulnA3to",
+    "imageSrc": "images/songs/dude_move.png"
+  },
+  {
+    "title": "mañana",
+    "artist": "Tainy · Young Miko · The Marias",
+    "videoId": "Wmel6COmPIg",
+    "imageSrc": "images/songs/manana.png"
+  },
+  {
+    "title": "Be Yourself Or Die Dreaming",
+    "artist": "Nouvelle Story",
+    "videoId": "dXZYOqqg6Kk",
+    "imageSrc": "images/songs/be_yourself.jpeg"
   }
 ]

@@ -44,8 +44,64 @@
   {
     "id": 7,
     "src": "images/interest_board/blue_lock.png",
+    "alt": "Blue Lock",
+    "title": "Blue Lock",
+    "notes": "Probably the only sports animanga I enjoy. It almost reinvigorated my love for soccer again, but I cant go down that path, competitive sports/gaming just straight up make me angry after a while. Also RIP Nagi, my washed GOAT."
+  },
+  {
+    "id": 8,
+    "src": "images/interest_board/mtg_yshtola.png",
+    "alt": "Yshtola",
+    "title": "Yshtola - Final Fantasy XIV",
+    "notes": "This card single handedly got me into MTG. I wasn't interested in playing at all (I'm not even a FF fan), but something about this blue/black/white deck my friend made me made my brain wrinkle."
+  },
+  {
+    "id": 9,
+    "src": "images/interest_board/charlie.png",
+    "alt": "Charlie - Smiling Friends",
+    "title": "Charlie - Smiling Friends",
+    "notes": "I waited for Zach or OneyNG to make a show for so long, and it grew so much more popular than I thought it would. Charlie is just Zach's self insert at this point, the bits where he talks as if he's off script kill me every time."
+  },
+  {
+    "id": 10,
+    "src": "images/interest_board/peach_riot.jpg",
     "alt": "Upside Down",
     "title": "my room is upside down - Deathbrain",
-    "notes": "Album art for the track 'my room is upside down' by Deathbrain."
+    "notes": "I didn't care for nothing PopMart, until I saw them. It gave me Scott Pilgrim vibes so I had to get at least one, but now I basically have a shrine of them at home. If anyone wants to trade Frankie for any of my Gigi's lmk"
+  },
+  {
+    "id": 11,
+    "src": "images/interest_board/kabru_head.png",
+    "alt": "Kabru",
+    "title": "Kabru - Dungeon Meshi",
+    "notes": "Maybe its cause I rarely see brown characters in anime, but this man has been been engrained into my head. Bro is such well layered foil to Laois, I wish I could get a spin off of just him."
+  },
+  {
+    "id": 12,
+    "src": "images/interest_board/3na.png",
+    "alt": "Ena",
+    "title": "Ena",
+    "notes": "I promise I'm not biased, but the creator was peruvian and I watched their Undertale fan stuff way before I knew. Always gave me the vibe I'm playing a video game in a dream, and the references used for some of the episodes are also such deep recognizable cuts."
+  },
+  {
+    "id": 13,
+    "src": "images/interest_board/kh2.png",
+    "alt": "Kingdom Hearts 2",
+    "title": "Kingdom Hearts 2",
+    "notes": "When I was a kid this game would literally have me and my brother fighting on who got to play it next, idk why we shared a save file. The game mechanic was simple enough that for kids it made enough sense to beat the game, but as I would find out later on a replay it was in depth enough for the crazy ass challenge runs I would end up doing. I don't care how corny the friendship theme can get, the game is just so good."
+  },
+  {
+    "id": 14,
+    "src": "images/interest_board/pp_forever.jpg",
+    "alt": "PUNCH PUNCH FOREVER!",
+    "title": "PUNCH PUNCH FOREVER!",
+    "notes": "This has alot of older newgrounds animation humor I used to miss. It takes so much from older 90's anime shounen/comedy, something I really only remember getting from Ranma 1/2"
+  },
+  {
+    "id": 15,
+    "src": "images/interest_board/dndads.jpg",
+    "alt": "Dungeons and Daddies",
+    "title": "Dungeons and Daddies",
+    "notes": "I thought I didn't like podcasts till I was told Freddie Wong didn't disappear off the earth and was working on this one. The over arching story somehow ties itself together so well after two seasons despite the players' constant need to make Anthony's life hell. I've also never seen game that incorporates so many meta level mechanics (npcs being random craigslist actors, audience participation, physical challenges that work well in an audio medium), it makes it a fun listen on my old daily walks."
   }
 ]

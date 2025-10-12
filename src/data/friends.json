@@ -6,42 +6,42 @@
   },
   {
     "name": "Micachu",
-    "url": "https://friend2-website.com",
-    "image": "https://placehold.co/150x150/F08000/FFFFFF?text=FRIEND+2"
+    "url": "https://bsky.app/profile/micaachu.bsky.social",
+    "image": "images/frens/micachu_pfp.jpeg"
   },
   {
     "name": "Micl",
-    "url": "https://friend3-website.com",
-    "image": "https://placehold.co/150x150/F08080/FFFFFF?text=FRIEND+3"
+    "url": "https://bsky.app/profile/dashingprince.bsky.social",
+    "image": "images/frens/micl_pfp.png"
   },
   {
     "name": "meme",
-    "url": "https://friend4-website.com",
-    "image": "https://accidentallight.substack.com/"
+    "url": "https://accidentallight.substack.com/",
+    "image": "images/frens/mia_pfp.jpg"
   },
   {
     "name": "TimesNewMe",
-    "url": "https://friend5-website.com",
-    "image": "https://placehold.co/150x150/F08080/FFFFFF?text=FRIEND+5"
+    "url": "https://timesnewme.com/",
+    "image": "images/frens/timesnewme.jpg"
   },
   {
-    "name": "Friend 6",
-    "url": "https://friend6-website.com",
-    "image": "https://placehold.co/150x150/F08080/FFFFFF?text=FRIEND+6"
+    "name": "Wati",
+    "url": "https://bsky.app/profile/wati.world",
+    "image": "images/frens/wati_pfp.jpg"
   },
     {
-    "name": "Friend 7",
-    "url": "https://friend7-website.com",
-    "image": "https://placehold.co/150x150/F08080/FFFFFF?text=FRIEND+7"
+    "name": "Kri",
+    "url": "",
+    "image": "images/frens/kri_pfp.jpg"
   },
   {
-    "name": "Friend 8",
-    "url": "https://friend8-website.com",
-    "image": "https://placehold.co/150x150/F08080/FFFFFF?text=FRIEND+8"
+    "name": "jayairee",
+    "url": "#",
+    "image": "images/frens/jayairee.jpg"
   },
   {
-    "name": "Friend 9",
-    "url": "https://friend9-website.com",
-    "image": "https://placehold.co/150x150/F08080/FFFFFF?text=FRIEND+9"
+    "name": "pb",
+    "url": "#",
+    "image": "images/frens/pb_pfp.jpg"
   }
 ]

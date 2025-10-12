@@ -49,32 +49,32 @@ const VisitorCounter = () => {
 
   if (loading) {
     return (
-      <aside className="boxy-window y2k-widget">
-        <div className="boxy-window-title p-3">
-          <span className="y2k-pill-title">Visitor Counter</span>
+      <div className="boxy-window p-0">
+        <div className="boxy-window-title p-4 w-full">
+          <h2 className="text-rose-900 font-bold text-xl">Visitor Counter</h2>
         </div>
-        <div className="widget-body text-center">
+        <div className="p-4 text-center text-rose-800">
           <div className="visitor-counter-display">
             <span className="counter-text">Loading...</span>
           </div>
         </div>
-      </aside>
+      </div>
     );
   }
 
   return (
-    <aside className="boxy-window y2k-widget">
-      <div className="boxy-window-title p-3">
-        <span className="y2k-pill-title">Visitor Counter</span>
+    <div className="boxy-window p-0">
+      <div className="boxy-window-title p-4 w-full">
+        <h2 className="text-rose-900 font-bold text-xl">Visitor Counter</h2>
       </div>
-      <div className="widget-body text-center">
+      <div className="p-4 text-center text-rose-800">
         <div className="visitor-counter-display">
           <div className="counter-label">Total Unique Visitors</div>
           <div className="counter-number">{visitorCount.toLocaleString()}</div>
           <div className="counter-subtitle">Stats collected from GoatCounter!</div>
         </div>
       </div>
-    </aside>
+    </div>
   );
 };
 

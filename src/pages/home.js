@@ -128,6 +128,7 @@ const Home = () => {
             <div className="widget-body">
               <ul className="text-rose-900 text-sm space-y-3">
                 <li><strong>[10/05/25]</strong> DEV Version of website is currently being worked on, soon to release v1.0</li>
+                <li><strong>[10/12/25]</strong> Finally finished working on the base website! version v1.0 ready for people to explore ^_^</li>
               </ul>
             </div>
           </aside>

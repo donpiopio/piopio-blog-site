@@ -4,7 +4,7 @@ import Navigation from '../components/Navigation';
 import '../css/main.css';
 
 const socials = [
-  { label: 'BlueSky', href: 'https://bluesky.com/donpiopio', slug: 'bluesky' },
+  { label: 'BlueSky', href: 'https://bsky.app/profile/donpiopio.bsky.social', slug: 'bluesky' },
   { label: 'TikTok', href: 'https://tiktok.com/@don.piopio', slug: 'tiktok' },
   { label: 'GitHub', href: 'https://github.com/donpiopio', slug: 'github' },
 ];

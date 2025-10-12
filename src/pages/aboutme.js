@@ -48,28 +48,28 @@ const AboutMe = () => {
                 <div className="media-category">Games</div>
                 <div className="media-content">
                   Super Mario Sunshine, <span className="highlight">Kingdom Hearts Series</span>, Danganronpa series, Dragon Ball Budokai Tenkaichi, Mario Party 4, Sonic Unleashed, Black Ops Zombies, Citizen Sleeper, 
-                  Hi Fi Rush, Valorant, Pokemon Series, Super Danganronpa Another 2 (Fan game), Cyberpunk 2077, Undertale/Deltarune, friend slop genre as a whole.
+                  Hi Fi Rush, Valorant, Pokemon Series, Super Danganronpa Another 2 (Fan game), Cyberpunk 2077, Undertale/Deltarune, friend slop genre as a whole
                 </div>
               </div>
               
               <div className="media-row">
                 <div className="media-category">Shows</div>
                 <div className="media-content">
-                  Smiling Friends, Haunted Manor, The Owl House, The Amazing Digital Circus.
+                  Smiling Friends, Haunted Manor, The Owl House, The Amazing Digital Circus
                 </div>
               </div>
 
               <div className="media-row">
                 <div className="media-category">Music</div>
                 <div className="media-content">
-                  DECO*27, FLAVOR FOLEY, JaimeP, <span className="highlight">alot of vocal synth music lately tbh</span>, Keanu Bicol, Bad Bunny, Duki, Tainy, Riproducer.
+                  DECO*27, FLAVOR FOLEY, JaimeP, <span className="highlight">alot of vocal synth music lately tbh</span>, Keanu Bicol, Bad Bunny, Duki, <span className="highlight">Tainy</span>, StrxwBerryMilk
                 </div>
               </div>
               
               <div className="media-row">
                 <div className="media-category">Animanga</div>
                 <div className="media-content">
-                  DragonBall, Chainsaw Man, Dandadan, Delicious in Dungeon, Mob Psycho, Ranma 1/2, Bug Ego, The Disastrous Life of Saiki K, Blue Lock, 
+                  DragonBall, Chainsaw Man, Dandadan, Delicious in Dungeon, Mob Psycho, Ranma 1/2, Bug Ego, The Disastrous Life of Saiki K, Blue Lock
                 </div>
               </div>
               
@@ -77,7 +77,7 @@ const AboutMe = () => {
                 <div className="media-category">Anything that's not in those buckets</div>
                 <div className="media-content">
                   <span className="highlight">Dungeons and Daddies</span>, Peach Riot, Dear Daniel, FNAF lore, 
-                  Petscop, San-X, Sanrio, tokidoki.
+                  Petscop, Sanrio, Kotobukiya
                 </div>
               </div>
             </div>

@@ -193,7 +193,7 @@ const OCGallery = () => {
           
           <div className="p-6">
             <p className="text-rose-700 text-sm mb-6 italic">
-              There's not many but I love them all
+              These are mainly limited to little guys representing me and close friends, and my DnD OCs I really loved.
             </p>
             
             <div className="character-grid">

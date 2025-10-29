@@ -2,6 +2,7 @@ import Home from './pages/home';
 import AboutMe from './pages/aboutme';
 import Interests from './pages/Interests';
 import Projects from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
 import Guestbook from './pages/Guestbook';
 import MusicPlayer from './pages/MusicPlayer';
 import Resume from './pages/Resume';
@@ -20,6 +21,7 @@ function App() {
           <Route path="/interests" element={<Interests />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:projectId" element={<ProjectDetail />} />
           <Route path="/guestbook" element={<Guestbook />} />
           <Route path="/connect" element={<Connect />} />
           <Route path="/buttons" element={<Buttons />} />

@@ -20,15 +20,52 @@ const RandomFacts = () => {
     "My all time favorite pokemon is cyndaquil! It was my first starter Pokemon!",
     "When walking around at home I like to take my socks half off my foot, so I can slide around easier.",
     "I can stop my hiccups instantly through sheer will.",
-    "My first job in my career was to fix the pipeline I made as an intern.",
+    "My first job in my career was to fix the data pipeline I made as an intern.",
     "Don't spam the generate facts button, I made it harder to find new facts the more you do.",
+    "There are some flavors I lied about liking IRL like Pandan, but I'm taking the others to my grave cause its been so long.",
+  ];
+
+  const spamWarnings = [
+    "Don't spam the generate facts button, I made it harder to find new facts the more you do.",
+    "There's only so much you can learn about me from facts! (please click something else on the site)",
+    "If you're reading this, you're on the spam-click probability list now.",
+    "Computer mice have a lifespan avg of 20 - 50 million clicks, don't waste them on the facts button please.",
+    "You know, you could just read the \"About Me\" page if you wanna learn more about me.",
   ];
 
   const [currentFact, setCurrentFact] = useState("");
+  const [clickCount, setClickCount] = useState(0);
+  const [shownFacts, setShownFacts] = useState([]);
 
   const generateFact = () => {
+    const newClickCount = clickCount + 1;
+    setClickCount(newClickCount);
+
+    // After 10 clicks, start showing spam warnings or repeating facts
+    if (newClickCount > 10) {
+      // 70% chance to show a spam warning, 30% chance to repeat a previous fact
+      if (Math.random() < 0.7) {
+        const randomWarningIndex = Math.floor(Math.random() * spamWarnings.length);
+        setCurrentFact(spamWarnings[randomWarningIndex]);
+        return;
+      } else if (shownFacts.length > 0) {
+        // Show a previously shown fact
+        const randomShownIndex = Math.floor(Math.random() * shownFacts.length);
+        setCurrentFact(shownFacts[randomShownIndex]);
+        return;
+      }
+    }
+
+    // Normal behavior: show a random fact
     const randomIndex = Math.floor(Math.random() * facts.length);
-    setCurrentFact(facts[randomIndex]);
+    const selectedFact = facts[randomIndex];
+    setCurrentFact(selectedFact);
+    
+    // Keep track of shown facts (limit to last 15 to prevent memory issues)
+    setShownFacts(prev => {
+      const updated = [...prev, selectedFact];
+      return updated.length > 15 ? updated.slice(-15) : updated;
+    });
   };
 
   return (

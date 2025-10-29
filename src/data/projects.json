@@ -1,6 +1,14 @@
 [
   {
     "id": "proj-1",
+    "title": "Google's Chemex",
+    "subtitle": "LLM-inferred Product Attributes",
+    "description": "My latest live project at Google Shopping, currently on Google Search! I architected the LLM inference system that creates the features on the Product Detail page. Another larger model I helped support does the inference on them.",
+    "image": "images/project_thumbnails/headphone_example.PNG",
+    "link": ""
+  },
+  {
+    "id": "proj-2",
     "title": "MScape",
     "subtitle": "Song Generative Synthwave Visualizer",
     "description": "A fun project I plan to revisit and revamp soon, generates a environment where the Mscape Car can drive that's based on the song playing! This started as a concept project I made with my friend in college some time ago, to test our knowledge of OpenGL and what we could do, so it doesnt have all the features we eventually wanted to add yet (different vehicles, starting page, etc.).",

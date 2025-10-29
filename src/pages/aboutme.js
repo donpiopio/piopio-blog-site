@@ -76,7 +76,7 @@ const AboutMe = () => {
               <div className="media-row">
                 <div className="media-category">Anything that's not in those buckets</div>
                 <div className="media-content">
-                  <span className="highlight">Dungeons and Daddies</span>, Peach Riot, Dear Daniel, FNAF lore, 
+                <span className="highlight">Dungeons and Daddies</span>, Peach Riot, Dear Daniel, FNAF lore, 
                   Petscop, Sanrio, Kotobukiya
                 </div>
               </div>

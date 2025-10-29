@@ -102,17 +102,28 @@ const Home = () => {
           <div className="boxy-window-title p-4">
             <h2 className="text-rose-900 font-bold text-xl">Quick Intro</h2>
           </div>
-          <div className="p-4 text-rose-800 flex items-center">
-            <div className="flex-1">
-              <p className="mb-4">Welcome to PioPio's website! This is where I'll be sharing things I'm interested in, updates from myself, and anything from my OC's to my latest projects.
-                <br /><br />This is also where I will post some of my professional work, projects, and resume for anyone interested in reaching out for collaboration or job opportunities.
-                <br /><br />So whoever you are, please look around and feel free to contact me if you have any questions or just want to say hi!
-              </p>
-            </div>
-            <div className="hover-image-container ml-6" style={{ width: '120px', height: '120px' }}>
+          <div className="px-4 py-2 text-rose-800 relative" style={{ display: 'flow-root' }}>
+            <div className="hover-image-container float-right ml-4 mb-2" style={{ width: '120px', height: '120px' }}>
               <img src={require('../images/hachi/standing_hachi.jpg')} alt="Default Icon" className="default-img-visible" />
               <img src={require('../images/hachi/test_hachi.png')} alt="Hover Icon" className="hover-img-hidden" />
             </div>
+            <p className="mb-2">Welcome to PioPio's website! This is where I'll be sharing things I'm interested in, updates from myself, and anything from my OC's to my latest projects.
+              <br /><br />This is also where I will post some of my professional work, projects, and resume for anyone interested in reaching out for collaboration or job opportunities. As this site grows the content you can expect will grow as well so please stay tuned for some upcoming updates on the right!
+              <br /><br />
+              <span className="jump-only-image-container float-left mr-4 mb-2" style={{ 
+                width: '120px', 
+                height: '120px',
+                display: 'inline-block',
+                transition: 'transform 0.2s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-8px)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0px)'}
+              >
+                <img src={require('../images/sona/peace_sign_sona.png')} alt="Peace Sign Sona" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </span>
+              So whoever you are, please look around and learn more about me and what I do! Also feel free to contact me if you have any questions or just want to say hi!
+            </p>
           </div>
         </section>
 
@@ -126,10 +137,15 @@ const Home = () => {
               <span className="y2k-pill-title">Updates</span>
             </div>
             <div className="widget-body">
-              <ul className="text-rose-900 text-sm space-y-3">
-                <li><strong>[10/12/25]</strong> Finally finished working on the base website! version v1.0 ready for people to explore ^_^</li>
-                <li><strong>[10/05/25]</strong> DEV Version of website is currently being worked on, soon to release v1.0</li>
-              </ul>
+              <div className="max-h-64 overflow-y-auto pr-2" style={{ scrollbarWidth: 'thin', scrollbarColor: '#D62828 #F3F4F6' }}>
+                <ul className="text-rose-900 text-sm space-y-3">
+                  <li><strong>[10/27/25]</strong> Working on big plans to add more pages (Voices?/3D Modeling Projects/More interactive pages).</li>
+                  <li><strong>[10/20/25]</strong> Added content to facts, projects, and OCs.</li>
+                  <li><strong>[10/15/25]</strong> Fixed some small bugs on mobile view, so its more responsive to small screen size.</li>
+                  <li><strong>[10/12/25]</strong> Finally finished working on the base website! V1.0 ready for people to explore ^_^</li>
+                  <li><strong>[10/05/25]</strong> DEV Version of website is currently being worked on, soon to release V1.0</li>
+                </ul>
+              </div>
             </div>
           </aside>
           

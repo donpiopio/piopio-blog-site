@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../css/main.css';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
@@ -39,8 +40,14 @@ const Projects = () => {
                   </div>
                 )}
                 <p className="mb-3 text-rose-800" style={{ maxWidth: '65ch' }}>{p.description}</p>
-                {p.link && (
-                  <a href={p.link} target="_blank" rel="noopener noreferrer" className="btn-y2k">Visit</a>
+                {p.link && p.link !== '' ? (
+                  <a href={p.link} target="_blank" rel="noopener noreferrer" className="btn-y2k">
+                    Visit Live
+                  </a>
+                ) : (
+                  <Link to={`/projects/${p.id}`} className="btn-y2k">
+                    View Details
+                  </Link>
                 )}
               </div>
             </article>

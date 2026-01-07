@@ -3,7 +3,11 @@ import Draggable from 'react-draggable';
 import Navigation from '../components/Navigation';
 import Layout from '../components/Layout';
 import interests from '../data/interests.json';
-import '../css/main.css';
+import '../css/base.css';
+import '../css/layout.css';
+import '../css/components.css';
+import '../css/utilities.css';
+import '../css/responsive.css';
 
 const DraggableImage = ({ interest, containerSize, onImageClick, zIndex, onDragStart }) => {
   const nodeRef = useRef(null);

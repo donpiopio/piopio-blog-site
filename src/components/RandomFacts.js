@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import '../css/main.css';
+import '../css/base.css';
+import '../css/layout.css';
+import '../css/components.css';
+import '../css/utilities.css';
+import '../css/responsive.css';
 
 const RandomFacts = () => {
   const facts = [

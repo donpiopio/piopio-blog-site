@@ -1,0 +1,151 @@
+/* src/css/layout.css */
+
+/* ==========================================================================
+   Main Site Layout and Grid
+   ========================================================================== */
+
+/* Main window/box style */
+.boxy-window {
+    --y2k-border: #D62828;
+    --y2k-shadow: #A01B1B;
+    --y2k-bg: #FFC0CB;
+    border: 3px solid var(--y2k-border);
+    box-shadow: 4px 4px 0px var(--y2k-shadow);
+    background-color: var(--y2k-bg);
+    border-radius: 18px;
+}
+
+.boxy-window-title {
+    background-color: #FF8BA0;
+    border-bottom: 3px solid #D62828;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+}
+
+/* Y2K Block Layout (Header + Nav + Content with connectors) */
+.site-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* left column (nav) + right column (content) */
+    grid-template-rows: auto auto 1fr; /* header, connectors, content */
+    grid-template-areas:
+        "header header"
+        "connect connect"
+        "nav content";
+    gap: 1.25rem;
+    width: min(1200px, 92vw);
+    margin: 1.25rem auto 9rem; /* leave room for footer music player */
+}
+
+/* Rounded outer site frame */
+.site-frame {
+    width: min(1280px, 96vw);
+    margin: 1.5rem auto 9rem;
+    border: 4px solid var(--y2k-rose-600);
+    border-radius: 28px;
+    background: var(--y2k-pink-200);
+    box-shadow: 6px 6px 0 var(--y2k-rose-700);
+    padding: 1.25rem;
+}
+
+.site-header { grid-area: header; padding: 1rem; }
+.connector-bar { grid-area: connect; position: relative; height: 18px; }
+.site-nav { grid-area: nav; }
+.site-content { grid-area: content; }
+
+/* Connector visuals: lines + pixel dots */
+.connector-line {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    background: #A01B1B;
+    box-shadow: 0 0 0 2px #FF8BA0 inset;
+    border-radius: 3px;
+}
+.connector-dot {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: #A01B1B;
+    border: 2px solid #FF8BA0;
+    box-shadow: 2px 2px 0 #A01B1B;
+    border-radius: 6px;
+}
+/* left line from below header to nav */
+.connector-nav { left: 8px; width: 240px; }
+.connector-nav-dot { left: 250px; }
+/* right line from below header to main */
+.connector-main { left: 280px; right: 8px; }
+.connector-main-dot { right: 8px; }
+
+/* Big rounded header with checkerboard */
+.site-header {
+    padding: 0 !important;
+    overflow: hidden;
+    border-radius: 24px;
+}
+.site-header > div,
+.site-header .y2k-header-wrap {
+    padding: 1.25rem 1rem;
+    background:
+        linear-gradient(0deg, rgba(255,255,255,0.15), rgba(255,255,255,0.15)),
+        repeating-linear-gradient(45deg, var(--y2k-pink-200) 0 10px, var(--y2k-pink-100) 10px 20px);
+}
+
+/* Connector bar spacing tweak */
+.connector-bar { margin-top: -6px; }
+
+/* Content area grid similar to screenshot: main column + skinny widgets column */
+.site-content {
+    padding: 0.25rem;
+}
+.site-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.25rem;
+}
+
+/* Flexbox-based layouts for older page structures */
+.home-flex-container,
+.aboutme-flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .site-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "header"
+            "connect"
+            "nav"
+            "content";
+        gap: 1rem;
+        width: 100%;
+        margin: 0.75rem auto 8rem;
+    }
+    .site-frame {
+        width: 100vw;
+        margin: 0 auto 8rem;
+        padding: 0.75rem;
+        border-radius: 20px;
+    }
+    .connector-nav { left: 8px; width: calc(40% - 24px); }
+    .connector-nav-dot { left: calc(40% - 8px); }
+    .connector-main { left: calc(40% + 8px); right: 8px; }
+
+    .site-content-grid { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 900px) {
+    .home-flex-container,
+    .aboutme-flex-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}

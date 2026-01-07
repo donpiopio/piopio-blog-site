@@ -1,6 +1,10 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import '../css/main.css';
+import '../css/base.css';
+import '../css/layout.css';
+import '../css/components.css';
+import '../css/utilities.css';
+import '../css/responsive.css';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
 import projects from '../data/projects.json';

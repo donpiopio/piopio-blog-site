@@ -1,0 +1,94 @@
+/* src/css/responsive.css */
+
+/* ==========================================================================
+   Responsive and Mobile-specific Styles
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    /* --- General Layout --- */
+    .aboutme-nav-box, .aboutme-content-box {
+        width: 100% !important;
+        max-width: none;
+        min-width: 0;
+        margin-bottom: 1.5rem;
+    }
+    .navigation-pane {
+        min-width: 0 !important;
+        width: 100% !important;
+        flex: 1 1 auto;
+    }
+
+    /* --- About Me Page --- */
+    .aboutme-corner {
+        float: none;
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 12px auto; /* center above text on small screens */
+        display: block;
+    }
+    .aboutme-float {
+        float: none;
+        width: 100%;
+        margin: 0 0 1rem 0;
+    }
+    .aboutme-float .aboutme-float-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-items: center;
+    }
+}
+
+@media (min-width: 901px) {
+    /* About Me page custom box widths for horizontal layout (scoped to legacy flex layout only) */
+    .aboutme-flex-container .aboutme-nav-box {
+        width: 33%;
+        min-width: 220px;
+        max-width: 350px;
+    }
+    .aboutme-flex-container .aboutme-content-box {
+        width: 67%;
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 640px) {
+    /* --- Music Player --- */
+    .music-player .music-progress-container { height: 16px; }
+    .music-player .music-progress-bar::-webkit-slider-thumb { height: 22px; width: 12px; }
+    .music-player .music-progress-bar::-moz-range-thumb { height: 22px; width: 12px; }
+    .music-player-time { font-size: 0.62rem; width: 3.4em; min-width: 3.4em; }
+    .music-player .text-lg { font-size: 0.95rem; }
+    .music-player .text-sm { font-size: 0.75rem; }
+    .music-player img { width: 28px !important; height: 28px !important; }
+    .music-volume-box { padding: 6px 10px !important; }
+    .music-volume-box span { font-size: 0.95rem !important; margin-right: 6px !important; }
+    .music-volume-box .volume-slider-container { width: 4.5rem; height: 8px; }
+    .player-row-flex { flex-wrap: wrap; padding-top: 4px; }
+    .player-left { max-width: 60%; }
+    .center-controls { position: static; transform: none; width: 100%; justify-content: flex-end; margin-top: 5px; margin-bottom: 30px; padding-right: 4px; }
+    .center-controls button { font-size: 1.5rem !important; }
+    .music-volume-box { position: static !important; transform: none !important; width: 100%; justify-content: center; margin-top: 12px; }
+
+    /* --- Media Interests Table --- */
+    .media-row {
+        flex-direction: column;
+    }
+    .media-category {
+        flex: none;
+        border-right: none;
+        border-bottom: 1px solid var(--y2k-rose-600);
+        text-align: center;
+    }
+    .media-content {
+        padding: 8px 12px 12px 12px;
+    }
+
+    /* --- Random Facts --- */
+    .fact-display-area {
+        padding: 12px;
+        min-height: 60px;
+    }
+    .generate-fact-btn {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+}

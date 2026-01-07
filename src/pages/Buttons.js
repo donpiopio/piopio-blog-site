@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
-import '../css/main.css';
+import '../css/base.css';
+import '../css/layout.css';
+import '../css/components.css';
+import '../css/utilities.css';
+import '../css/responsive.css';
 
 // Your button that others can copy
 const myButton = {

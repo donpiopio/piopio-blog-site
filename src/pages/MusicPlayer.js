@@ -1,5 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
-import '../css/main.css';
+import '../css/base.css';
+import '../css/layout.css';
+import '../css/components.css';
+import '../css/utilities.css';
+import '../css/responsive.css';
 import tracks from '../data/tracks.json';
 
 const MusicPlayer = () => {
@@ -149,7 +153,7 @@ const MusicPlayer = () => {
 
   return (
     <>
-      <footer className={`fixed bottom-0 left-0 w-full z-50 py-5 px-4 border-t-2 border-rose-900 shadow-2xl bg-pink-300 music-player transition-all duration-300 ${isMinimized ? 'minimized' : ''}`} style={{ minHeight: isMinimized ? '60px' : '82px' }}>
+      <footer className={`music-player-footer ${isMinimized ? 'minimized' : ''}`}>
         <div id="youtube-player-container" style={{ display: 'none' }}></div>
 
         {/* Minimize/Maximize Button */}
@@ -161,7 +165,7 @@ const MusicPlayer = () => {
           {isMinimized ? '▲' : '▼'}
         </button>
 
-        <div className={`boxy-window flex flex-col w-full max-w-6xl mx-auto transition-all duration-300 ${isMinimized ? 'minimized-content' : ''}`} style={{ padding: isMinimized ? '8px 16px' : '20px 16px 12px 16px' }}>
+        <div className={`player-container boxy-window ${isMinimized ? 'minimized-content' : ''}`} style={{ background: '#f7b6c2', border: '2px solid #c80040', borderRadius: '8px', boxShadow: '2px 2px 0 #c80040' }}>
           
           {/* Minimized View */}
           {isMinimized ? (
@@ -240,7 +244,7 @@ const MusicPlayer = () => {
               >&gt;&gt;</button>
             </div>
             {/* Retro/cute themed volume slider on the right */}
-            <div className="music-volume-box flex items-center space-x-2 text-rose-900" style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', background: '#f7b6c2', border: '2px solid #c80040', borderRadius: '8px', padding: '8px 16px', boxShadow: '2px 2px 0 #c80040' }}>
+            <div className="music-volume-box" >
               <span style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#c80040', marginRight: '8px', fontFamily: 'Montserrat, Arial, sans-serif' }}>VOL</span>
               <div className="volume-slider-container">
                 <div className="volume-slider-track">

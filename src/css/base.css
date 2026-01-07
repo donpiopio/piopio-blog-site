@@ -1,0 +1,49 @@
+/* src/css/base.css */
+
+/* ==========================================================================
+   Base Styles, Variables, and Resets
+   ========================================================================== */
+
+/* Y2K adorable theme helpers */
+:root {
+    --y2k-pink-100: #ffe2ec;
+    --y2k-pink-200: #ffcfe0;
+    --y2k-pink-300: #ffb7cf;
+    --y2k-pink-400: #ff8ba0;
+    --y2k-pink-music: #FF85A9;
+    --y2k-rose-600: #D62828;
+    --y2k-rose-700: #A01B1B;
+
+    /* Added from media-interests for consistency */
+    --y2k-blue-200: #dbeafe;
+    --y2k-blue-800: #1e40af;
+}
+
+/* Custom font and background */
+body {
+    font-family: 'VT323', monospace;
+    background-color: #FEE7F2;
+    background-image: url('../images/backgrounds/site_background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Prevent tiny layout overflows from causing horizontal scroll on mobile */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Readable retro pixel/mono font for Y2K vibe */
+body, .boxy-window, .boxy-window-title, .collage-item, .music-player, .navigation-pane, .home-flex-container, .home-middle-box, .aboutme-nav-box, .aboutme-content-box, .music-progress-bar, .music-volume-slider, .prose, h1, h2, h3, h4, h5, h6, button, input, select, textarea {
+    font-family: 'IBM Plex Mono', 'Fira Mono', 'Consolas', 'monospace', Arial, sans-serif !important;
+    letter-spacing: 0.2px;
+    font-size: 1.08em;
+}
+
+/* Make headings a bit bolder and larger for pixel/mono font */
+h1, h2, h3, .boxy-window-title {
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    font-size: 1.18em;
+}

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import '../css/main.css';
+import '../css/base.css';
+import '../css/layout.css';
+import '../css/components.css';
+import '../css/utilities.css';
+import '../css/responsive.css';
 import Navigation from '../components/Navigation';
 import Layout from '../components/Layout';
 import ocsData from '../data/ocs.json';

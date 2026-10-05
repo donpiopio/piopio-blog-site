@@ -1,3 +1,4 @@
+import '../css/components/VisitorCounter.css';
 import React, { useState, useEffect } from 'react';
 import { getSupabase, isSupabaseConfigured } from '../lib/supabaseClient';
 

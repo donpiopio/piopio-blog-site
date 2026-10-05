@@ -1,9 +1,5 @@
+import '../css/components/MusicPlayer.css';
 import React, { useRef, useState, useEffect } from 'react';
-import '../css/base.css';
-import '../css/layout.css';
-import '../css/components.css';
-import '../css/utilities.css';
-import '../css/responsive.css';
 import tracks from '../data/tracks.json';
 
 const MusicPlayer = () => {

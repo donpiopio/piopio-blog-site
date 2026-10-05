@@ -1,0 +1,23 @@
+/* --- Random Facts --- */
+.random-facts-box {
+    margin-top: 20px;
+}
+.fact-display-area {
+    background: var(--y2k-pink-200);
+    border: 2px solid var(--y2k-rose-400);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fact-text {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--y2k-rose-700);
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
+}

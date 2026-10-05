@@ -23,7 +23,7 @@
 body {
     font-family: 'VT323', monospace;
     background-color: #FEE7F2;
-    background-image: url('../images/backgrounds/site_background.png');
+    background-image: url('../../images/backgrounds/site_background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

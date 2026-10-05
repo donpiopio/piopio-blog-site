@@ -1,10 +1,6 @@
+import '../css/pages/Home.css';
 
 import React, { useState } from 'react';
-import '../css/base.css';
-import '../css/layout.css';
-import '../css/components.css';
-import '../css/utilities.css';
-import '../css/responsive.css';
 import Navigation from '../components/Navigation';
 import Layout from '../components/Layout';
 import VisitorCounter from '../components/VisitorCounter';

@@ -1,11 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
-import '../css/base.css';
-import '../css/layout.css';
-import '../css/components.css';
-import '../css/utilities.css';
-import '../css/responsive.css';
 
 const socials = [
   { label: 'BlueSky', href: 'https://bsky.app/profile/donpiopio.bsky.social', slug: 'bluesky' },

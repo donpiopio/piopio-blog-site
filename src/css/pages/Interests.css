@@ -1,0 +1,68 @@
+/* --- Media Interests Table --- */
+.media-interests-table {
+    border: 2px solid var(--y2k-rose-600);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--y2k-pink-200);
+}
+.media-row {
+    display: flex;
+    border-bottom: 1px dashed var(--y2k-rose-400);
+}
+.media-row:last-child {
+    border-bottom: none;
+}
+.media-category {
+    flex: 0 0 140px;
+    background: var(--y2k-pink-300);
+    border-right: 2px solid var(--y2k-rose-600);
+    padding: 12px 16px;
+    font-family: 'Press Start 2P', Pixel, monospace;
+    font-weight: normal;
+    color: var(--y2k-rose-800);
+    font-size: 0.65rem;
+    line-height: 1.3;
+    display: flex;
+    align-items: flex-start;
+    text-transform: uppercase;
+}
+.media-content {
+    flex: 1;
+    padding: 6px 16px;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--y2k-rose-700);
+}
+.media-content .highlight {
+    font-weight: bold;
+}
+/* --- Interest Board Popup --- */
+.interest-popup-modal {
+    background: var(--y2k-pink-100);
+    border: 4px solid var(--y2k-rose-600);
+    border-radius: 18px;
+    box-shadow: 6px 6px 0 var(--y2k-rose-700);
+    max-width: 500px;
+    width: 90%;
+}
+
+.interest-popup-content {
+    padding: 1rem;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.interest-text-container {
+    background: var(--y2k-pink-200);
+    border: 2px dashed var(--y2k-rose-400);
+    padding: 0.75rem;
+    border-radius: 8px;
+}
+
+.gallery-item-title {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    color: var(--y2k-rose-800);
+}

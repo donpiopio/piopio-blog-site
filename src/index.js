@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './css/global/base.css';
+import './css/global/layout.css';
+import './css/global/utilities.css';
+import './css/global/responsive.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './tailwind.output.css';

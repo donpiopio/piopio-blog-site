@@ -1,9 +1,5 @@
+import '../css/pages/AboutMe.css';
 import React from 'react';
-import '../css/base.css';
-import '../css/layout.css';
-import '../css/components.css';
-import '../css/utilities.css';
-import '../css/responsive.css';
 import Navigation from '../components/Navigation';
 import Layout from '../components/Layout';
 
@@ -81,7 +77,7 @@ const AboutMe = () => {
                 <div className="media-category">Anything that's not in those buckets</div>
                 <div className="media-content">
                 <span className="highlight">Dungeons and Daddies</span>, Peach Riot, Dear Daniel, FNAF lore, 
-                  Petscop, Sanrio, Kotobukiya
+                  Trading Card Game Collecting, Sanrio, Kotobukiya
                 </div>
               </div>
             </div>

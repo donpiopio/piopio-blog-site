@@ -1,5 +1,5 @@
 import '../css/pages/Interests.css';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import Draggable from 'react-draggable';
 import Navigation from '../components/Navigation';
 import Layout from '../components/Layout';
@@ -7,8 +7,58 @@ import interests from '../data/interests.json';
 
 const DraggableImage = ({ interest, containerSize, onImageClick, zIndex, onDragStart }) => {
   const nodeRef = useRef(null);
-  const randomX = Math.random() * (containerSize.width - 150);
-  const randomY = Math.random() * (containerSize.height - 150);
+  
+  // Controlled position state
+  const [pos, setPos] = useState(() => ({
+    x: Math.random() * Math.max(0, containerSize.width - 200),
+    y: Math.random() * Math.max(0, containerSize.height - 200)
+  }));
+  
+  const [isDragging, setIsDragging] = useState(false);
+  
+  // Velocity in pixels per tick
+  const vel = useRef({
+    vx: (Math.random() - 0.5) * 40,
+    vy: (Math.random() - 0.5) * 40
+  });
+
+  const animDelay = useMemo(() => Math.random() * -10, []);
+  const animDuration = useMemo(() => 5 + Math.random() * 4, []);
+
+  useEffect(() => {
+    if (isDragging || containerSize.width === 0) return;
+
+    const intervalId = setInterval(() => {
+      setPos(prev => {
+        let newX = prev.x + vel.current.vx;
+        let newY = prev.y + vel.current.vy;
+        
+        // Occasionally wander randomly
+        if (Math.random() < 0.2) {
+          vel.current.vx += (Math.random() - 0.5) * 30;
+          vel.current.vy += (Math.random() - 0.5) * 30;
+          
+          // Cap velocity
+          vel.current.vx = Math.max(-60, Math.min(60, vel.current.vx));
+          vel.current.vy = Math.max(-60, Math.min(60, vel.current.vy));
+        }
+
+        const maxW = containerSize.width - 180;
+        const maxH = containerSize.height - 180;
+        
+        // Bounce off walls
+        if (newX <= 0) { newX = 0; vel.current.vx *= -1; }
+        else if (newX >= maxW) { newX = maxW; vel.current.vx *= -1; }
+        
+        if (newY <= 0) { newY = 0; vel.current.vy *= -1; }
+        else if (newY >= maxH) { newY = maxH; vel.current.vy *= -1; }
+        
+        return { x: newX, y: newY };
+      });
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [isDragging, containerSize]);
 
   const handleDoubleClick = (e) => {
     e.preventDefault();
@@ -16,40 +66,58 @@ const DraggableImage = ({ interest, containerSize, onImageClick, zIndex, onDragS
   };
 
   const handleStart = () => {
+    setIsDragging(true);
     onDragStart(interest.id);
+  };
+
+  const handleDrag = (e, data) => {
+    setPos({ x: data.x, y: data.y });
+  };
+
+  const handleStop = () => {
+    setIsDragging(false);
   };
 
   return (
     <Draggable 
       nodeRef={nodeRef} 
-      defaultPosition={{ x: randomX, y: randomY }}
+      position={pos}
       onStart={handleStart}
+      onDrag={handleDrag}
+      onStop={handleStop}
     >
       <div 
         ref={nodeRef} 
         className="collage-item" 
         style={{ 
           position: 'absolute', 
-          width: '150px', 
-          height: '150px', 
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: zIndex
+          width: '180px', 
+          height: '180px', 
+          zIndex: zIndex,
+          transition: isDragging ? 'none' : 'transform 1s linear'
         }}
         onDoubleClick={handleDoubleClick}
       >
-        <img 
-          draggable="false" 
-          src={require(`../${interest.src}`)} 
-          alt={interest.alt} 
+        <div 
+          className="bubble-float" 
           style={{ 
-            maxWidth: '100%', 
-            maxHeight: '100%', 
-            objectFit: 'contain'
-          }} 
-        />
+            animationDelay: `${animDelay}s`, 
+            animationDuration: `${animDuration}s` 
+          }}
+        >
+          <div className="bubble-container">
+            <img 
+              draggable="false" 
+              src={require(`../${interest.src}`)} 
+              alt={interest.alt} 
+              style={{ 
+                maxWidth: '100%', 
+                maxHeight: '100%', 
+                objectFit: 'contain'
+              }} 
+            />
+          </div>
+        </div>
       </div>
     </Draggable>
   );
@@ -117,28 +185,30 @@ const Interests = () => {
 
       {selectedImage && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={handleClosePane}>
-          <div className="interest-popup-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="boxy-window-title p-4 flex justify-between items-center">
-              <h2 className="text-rose-900 font-bold text-xl">{selectedImage.title}</h2>
-              <button 
-                onClick={handleClosePane}
-                className="text-rose-600 hover:text-rose-800 text-2xl font-bold leading-none"
-                aria-label="Close"
-              >
-                ×
-              </button>
-            </div>
-            <div className="interest-popup-content">
-              <img src={require(`../${selectedImage.src}`)} alt={selectedImage.alt} className="w-full h-auto max-h-64 object-contain mb-4" />
-              <div className="interest-text-container">
-                <p className="text-rose-800">
-                  {selectedImage.notes.split('\n').map((line, idx, arr) => (
-                    <span key={idx}>
-                      {line}
-                      {idx < arr.length - 1 && <br />}
-                    </span>
-                  ))}
-                </p>
+          <div className="relative" onClick={(e) => e.stopPropagation()}>
+            <button 
+              onClick={handleClosePane}
+              className="absolute -top-2 -right-2 md:-top-4 md:-right-4 bg-rose-100 text-rose-500 hover:text-rose-800 hover:bg-rose-200 border-2 border-rose-500 rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold z-[60] shadow-md transition-colors"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <div className="interest-popup-modal">
+              <div className="interest-popup-content">
+                <div className="my-auto w-full flex flex-col items-center">
+                  <h2 className="text-rose-900 font-bold text-2xl mb-4 text-center">{selectedImage.title}</h2>
+                  <img src={require(`../${selectedImage.src}`)} alt={selectedImage.alt} className="w-full h-auto max-h-48 object-contain mb-4 drop-shadow-md" />
+                  <div className="interest-text-container text-center">
+                    <p className="text-rose-900 font-semibold">
+                      {selectedImage.notes.split('\n').map((line, idx, arr) => (
+                        <span key={idx}>
+                          {line}
+                          {idx < arr.length - 1 && <br />}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

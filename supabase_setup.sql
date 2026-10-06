@@ -97,3 +97,50 @@ INSERT INTO tracks (title, artist, video_id, image_url) VALUES
 ('Dude move', 'Baba', 'dHmQulnA3to', 'images/songs/dude_move.png'),
 ('mañana', 'Tainy · Young Miko · The Marias', 'Wmel6COmPIg', 'images/songs/manana.png'),
 ('Be Yourself Or Die Dreaming', 'Nouvelle Story', 'dXZYOqqg6Kk', 'images/songs/be_yourself.jpeg');
+
+-- ==========================================
+-- RATE LIMITER FOR VISITOR COUNTER
+-- ==========================================
+
+-- 1. Add an IP column to track where requests come from
+ALTER TABLE visitors ADD COLUMN IF NOT EXISTS ip_address TEXT;
+
+-- 2. Create the security function
+CREATE OR REPLACE FUNCTION check_visitor_rate_limit()
+RETURNS TRIGGER AS $$
+DECLARE
+  client_ip TEXT;
+  recent_visits INT;
+BEGIN
+  -- Extract the real IP address from Supabase's request headers
+  client_ip := split_part(current_setting('request.headers', true)::json->>'x-forwarded-for', ',', 1);
+  
+  -- Save the IP to the new row
+  NEW.ip_address := client_ip;
+  
+  -- If IP is somehow missing (like in local testing), let it pass
+  IF client_ip IS NULL THEN
+    RETURN NEW;
+  END IF;
+
+  -- Count how many DIFFERENT fingerprints this IP has created in the last 24 hours
+  SELECT count(*) INTO recent_visits
+  FROM visitors
+  WHERE ip_address = client_ip
+  AND created_at > NOW() - INTERVAL '1 day';
+
+  -- If one IP tries to pretend to be more than 5 different people in a day, block it!
+  IF recent_visits > 5 THEN
+    RAISE EXCEPTION 'Rate limit exceeded: Too many unique visits from this IP.';
+  END IF;
+
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- 3. Attach the security function to the table
+DROP TRIGGER IF EXISTS rate_limit_trigger ON visitors;
+CREATE TRIGGER rate_limit_trigger
+  BEFORE INSERT ON visitors
+  FOR EACH ROW
+  EXECUTE FUNCTION check_visitor_rate_limit();

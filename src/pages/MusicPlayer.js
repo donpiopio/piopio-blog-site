@@ -1,16 +1,62 @@
 import '../css/components/MusicPlayer.css';
 import React, { useRef, useState, useEffect } from 'react';
-import tracks from '../data/tracks.json';
+import localTracks from '../data/tracks.json';
+import { getSupabase, isSupabaseConfigured } from '../lib/supabaseClient';
 
 const MusicPlayer = () => {
   const playerRef = useRef(null);
-  const [currentTrack, setCurrentTrack] = useState(Math.floor(Math.random() * tracks.length));
+  const [tracks, setTracks] = useState(localTracks);
+  const [currentTrack, setCurrentTrack] = useState(Math.floor(Math.random() * localTracks.length));
   const [playerReady, setPlayerReady] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.7);
   const [isMinimized, setIsMinimized] = useState(false);
+
+  // Fetch tracks from Supabase
+  useEffect(() => {
+    const fetchTracks = async () => {
+      try {
+        if (!isSupabaseConfigured()) return;
+        const supabase = getSupabase();
+        const { data, error } = await supabase
+          .from('tracks')
+          .select('*')
+          .order('id', { ascending: true });
+        
+        if (error) throw error;
+        if (data && data.length > 0) {
+          const formattedTracks = data.map(t => ({
+            title: t.title,
+            artist: t.artist,
+            videoId: t.video_id,
+            imageSrc: t.image_url
+          }));
+          setTracks(formattedTracks);
+          // Only change track randomly if player hasn't started playing yet
+          if (!isPlaying && currentTime === 0) {
+            setCurrentTrack(Math.floor(Math.random() * formattedTracks.length));
+          }
+        }
+      } catch (err) {
+        console.error('Error fetching tracks:', err);
+      }
+    };
+    fetchTracks();
+    // eslint-disable-next-line
+  }, []);
+
+  // Helper to handle both local required images and http URLs
+  const getImageUrl = (src) => {
+    if (!src) return '';
+    if (src.startsWith('http')) return src;
+    try {
+      return require(`../${src}`);
+    } catch (e) {
+      return '';
+    }
+  };
 
   // Load YouTube IFrame API
   useEffect(() => {
@@ -23,7 +69,7 @@ const MusicPlayer = () => {
       playerRef.current = new window.YT.Player('youtube-player-container', {
         height: '0',
         width: '0',
-        videoId: tracks[currentTrack].videoId,
+        videoId: tracks[currentTrack]?.videoId || 'xgOeKgGKuP0',
         playerVars: {
           controls: 0,
           disablekb: 1,
@@ -43,18 +89,20 @@ const MusicPlayer = () => {
 
   // Update track when currentTrack changes
   useEffect(() => {
-    if (playerReady && playerRef.current) {
+    if (playerReady && playerRef.current && tracks[currentTrack]) {
       playerRef.current.cueVideoById(tracks[currentTrack].videoId);
       setCurrentTime(0);
       setTimeout(() => {
-        setDuration(playerRef.current.getDuration());
-        // Try to autoplay on track change
-        setIsPlaying(true);
-        playerRef.current.playVideo();
+        if (playerRef.current && playerRef.current.getDuration) {
+          setDuration(playerRef.current.getDuration());
+          // Try to autoplay on track change
+          setIsPlaying(true);
+          playerRef.current.playVideo();
+        }
       }, 500);
     }
     // eslint-disable-next-line
-  }, [currentTrack, playerReady]);
+  }, [currentTrack, playerReady, tracks]);
 
   // Player event handlers
   function onPlayerReady(event) {
@@ -85,7 +133,9 @@ const MusicPlayer = () => {
     let interval = null;
     if (isPlaying && playerRef.current) {
       interval = setInterval(() => {
-        setCurrentTime(playerRef.current.getCurrentTime());
+        if (playerRef.current && playerRef.current.getCurrentTime) {
+          setCurrentTime(playerRef.current.getCurrentTime());
+        }
       }, 1000);
     } else if (!isPlaying) {
       clearInterval(interval);
@@ -136,6 +186,7 @@ const MusicPlayer = () => {
 
   // Format time helper
   function formatTime(seconds) {
+    if (!seconds) return "0:00";
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
     const paddedSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
@@ -146,6 +197,10 @@ const MusicPlayer = () => {
   const toggleMinimize = () => {
     setIsMinimized(!isMinimized);
   };
+
+  // Avoid crash if tracks isn't loaded yet
+  if (!tracks || tracks.length === 0) return null;
+  const activeTrack = tracks[currentTrack] || tracks[0];
 
   return (
     <>
@@ -167,9 +222,9 @@ const MusicPlayer = () => {
           {isMinimized ? (
             <div className="flex items-center justify-between w-full">
               <div className="flex items-center space-x-3 flex-shrink min-w-0">
-                <img src={require(`../${tracks[currentTrack].imageSrc}`)} alt="Track Art" className="w-8 h-8 object-cover border-2 border-rose-900 shadow-md" />
+                <img src={getImageUrl(activeTrack.imageSrc)} alt="Track Art" className="w-8 h-8 object-cover border-2 border-rose-900 shadow-md" />
                 <div className="text-rose-900 overflow-hidden">
-                  <div className="text-sm font-bold truncate">{tracks[currentTrack].title}</div>
+                  <div className="text-sm font-bold truncate">{activeTrack.title}</div>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -216,10 +271,10 @@ const MusicPlayer = () => {
           </div>
           <div className="player-row-flex flex items-center justify-between w-full relative">
             <div className="player-left flex items-center space-x-3 flex-shrink min-w-0 max-w-[40%]">
-              <img src={require(`../${tracks[currentTrack].imageSrc}`)} alt="Track Art" className="w-10 h-10 object-cover border-2 border-rose-900 shadow-md" />
+              <img src={getImageUrl(activeTrack.imageSrc)} alt="Track Art" className="w-10 h-10 object-cover border-2 border-rose-900 shadow-md" />
               <div className="text-rose-900 overflow-hidden">
-                <div className="text-lg font-bold truncate">{tracks[currentTrack].title}</div>
-                <div className="text-sm truncate">{tracks[currentTrack].artist}</div>
+                <div className="text-lg font-bold truncate">{activeTrack.title}</div>
+                <div className="text-sm truncate">{activeTrack.artist}</div>
               </div>
             </div>
             <div className="center-controls absolute left-1/2 transform -translate-x-1/2 flex space-x-4">
